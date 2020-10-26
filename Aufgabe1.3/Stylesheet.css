@@ -1,234 +1,724 @@
-body {
+@media screen and (max-width: 600px)  {
 
-  font-family: sans-serif;
-  background-image: url("bg.png");
-  background-repeat: repeat;
-  text-align: center;
-  
-  }
-  
-  nav {
-  
-      
-    float: right;
-      position: sticky;
-    top: 0px;
-      background-color: black;
-      text-align: right;
-      border: 2px solid black;
-      border-radius: 5px;
-      padding-left: 2px;
-      padding-right: 2px;
-      padding-top: 2px;
-      
-     
-      
-  }
-  
-  
+  body {
+
+    font-family: sans-serif;
+    background-image: url("bg.png");
+    background-repeat: repeat;
+    text-align: center;
     
-    .kreis {
-  
+    }
+    
+    nav {
+    
+        
       
-      background-color: rgb(209, 40, 40);
-      height: 800px;
-      width: 800px;
-      border-radius: 50%;
-      margin: -450px auto auto auto;
-      color: white;
-      text-align: center;
-    }
-  
-    #ueberschrift{
-  
-      padding-top: 45%;
-      font-size: 150px;
-      margin-bottom: 5px;
-  
-  
-    }
-  
-  
-    #kreisunter{
-  
-      font-size: 50px;
-      padding-left: 50.5%;
-      text-align: left;
-      margin-top: -25px;
-      margin-bottom: 10px;
-  
-    }
-  
-    #kreisunterunter{
-  
-      padding-left: 51%;
-      padding-right: 20%;
-      margin-top: 5px;
-      text-align: left;
-  
-    }
-  a{
-  
-  color: white;
-  text-decoration:none;
-  }
-  
-  
-  
-  
-  
-  
-  a:hover {
-      color: rgba(235, 6, 6, 0.918);
-    }
-  
-  #active {
-      color:  rgba(235, 6, 6, 0.918);
-    }
-  .content{
-      display: grid;
-      justify-content: left;
-      align-items: left;
-      font-family: sans-serif;
-      text-align: left;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 20px;
-      margin-top: 75px;
-      color: rgb(209, 40, 40);
-      font-size: 30px;
-      font-weight: bold;
-  
-  }
-  
-  
-  
-  .img{
-  
+      position: sticky;
+      top: 0px;
+      background-color: black;
+        text-align: center;
+        border: 0.125em solid black;
+        border-radius: 0.313em;
+        padding-left: 0.125em;
+        padding-right: 0.125em;
+        padding-top: 0.125em;
+        
        
-     max-width: 800px; 
-      height: auto;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: auto;
-      margin-top: 10px;
-      
-  }
-  
-  video{
-  
-      
-     
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: auto;
-      margin-top: 75px;
-      
-  
-  }
-  
-  #email{
-  
-      width: 40px; 
-      height: 40px;
-      margin: auto;
-      
-  }
-  #instagram{
-      
-      width: 40px; 
-      height: 40px;
-      margin: auto;
-      
-      
-      
-  
-  }
-  
-  #instagram:hover {
-      
-      -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      transform: scale(1.2);
-  
-  }
-  
-  #email:hover {
-      
-      -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      transform: scale(1.2);
-      
-  
-  }
-  
-  .ftext {
-  
-      display: grid;
-      justify-content: left;
-      align-items: left;
-      font-family: sans-serif;
-      text-align: left;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      color: rgb(0, 0, 0);
-      font-size: 18px;
-  }
-  
-  .container{
-  
-      display: grid;
-      justify-content: left;
-      align-items: left;
-      font-family: sans-serif;
-      text-align: left;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      
-      
-      }
-  
-     
-  
-  input[type=text], select, textarea {
-  background-color: rgb(197, 190, 190);
-  margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 5px;
-      margin-top: 5px;
-      border: none;
-  
-  
-  
-  }
-  ::placeholder{color: white;}
-  
-  
-  input[type=submit] {
-      background-color: rgb(197, 190, 190);
-      color: white;
-      
-      border: none;
-      margin-top: 5px;
-      cursor: pointer;
+        
     }
-  
-  #disclaimer {
-      margin-top: 5px;
-      margin-bottom: 5px;
-      margin-left: 0px;
-      font-family: sans-serif;
-      text-align: left;
-      max-width: 100px;
-      color:rgb(197, 190, 190) ;
-      font-size: 7px;
-  }
-  
-  
-  
+    
+    
+      
+      .kreis {
+    
+        
+        background-color: rgb(209, 40, 40);
+        height: 600px;
+        width: 600px;
+        border-radius: 50%;
+        margin: -250px auto auto auto;
+        color: white;
+        text-align: center;
+      }
+    
+      #ueberschrift{
+    
+        padding-top: 45%;
+        font-size: 9.375em;
+        margin-bottom: 0.313em;
+    
+    
+      }
+    
+    
+      #kreisunter{
+    
+        font-size: 3.125em;
+        padding-left: 50.5%;
+        text-align: left;
+        margin-top: -1.563em;
+        margin-bottom: 0.625em;
+    
+      }
+    
+      #kreisunterunter{
+    
+        padding-left: 51%;
+        padding-right: 20%;
+        margin-top: 0.313em;
+        text-align: left;
+    
+      }
+    a{
+    
+    color: white;
+    text-decoration:none;
+    }
+    
+    
+    
+    
+    
+    
+    a:hover {
+        color: rgba(235, 6, 6, 0.918);
+      }
+    
+    #active {
+        color:  rgba(235, 6, 6, 0.918);
+      }
+    .content{
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.25em;
+        margin-top: 4.688em;
+        color: rgb(209, 40, 40);
+        font-size: 1.875em;
+        font-weight: bold;
+    
+    }
+    
+    
+    
+    .img{
+    
+         
+        width: 100%; 
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: 0.625em;
+        
+    }
+    
+    video{
+    
+        
+       
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: 4.688em;
+        
+    
+    }
+    
+    #email{
+    
+        width: 2.5em; 
+        height: 2.5em;
+        margin: auto;
+        
+    }
+    #instagram{
+        
+        width: 2.5em; 
+        height: 2.5em;
+        margin: auto;
+        
+        
+        
+    
+    }
+    
+    #instagram:hover {
+        
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    
+    }
+    
+    #email:hover {
+        
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+        
+    
+    }
+    
+    .ftext {
+    
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(0, 0, 0);
+        font-size: 1.125em;
+    }
+    
+    .container{
+    
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.25em;
+        margin-top: 1.25em;
+        
+        
+        }
+    
+       
+    
+    input[type=text], select, textarea {
+    background-color: rgb(197, 190, 190);
+    margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0.313em;
+        margin-top: 0.313em;
+        border: none;
+    
+    
+    
+    }
+    ::placeholder{color: white;}
+    
+    
+    input[type=submit] {
+        background-color: rgb(197, 190, 190);
+        color: white;
+        
+        border: none;
+        margin-top: 0.313em;
+        cursor: pointer;
+      }
+    
+    #disclaimer {
+        margin-top: 0.313em;
+        margin-bottom: 0.313em;
+        margin-left: 0px;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 6.25em;
+        color:rgb(197, 190, 190) ;
+        font-size: 0.438em;
+    }
+    
+    
+    
+    
+    
+    
+
+}
+@media screen and (max-width: 1024px)  {
+
+  body {
+
+    font-family: sans-serif;
+    background-image: url("bg.png");
+    background-repeat: repeat;
+    text-align: center;
+    
+    }
+    
+    nav {
+    
+        
+      float: right;
+        position: sticky;
+      top: 0px;
+        background-color: black;
+        text-align: right;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+        
+       
+        
+    }
+    
+    
+      
+      .kreis {
+    
+        
+        background-color: rgb(209, 40, 40);
+        height: 800px;
+        width: 800px;
+        border-radius: 50%;
+        margin: -450px auto auto auto;
+        color: white;
+        text-align: center;
+      }
+    
+      #ueberschrift{
+    
+        padding-top: 45%;
+        font-size: 150px;
+        margin-bottom: 5px;
+    
+    
+      }
+    
+    
+      #kreisunter{
+    
+        font-size: 50px;
+        padding-left: 50.5%;
+        text-align: left;
+        margin-top: -25px;
+        margin-bottom: 10px;
+    
+      }
+    
+      #kreisunterunter{
+    
+        padding-left: 51%;
+        padding-right: 20%;
+        margin-top: 5px;
+        text-align: left;
+    
+      }
+    a{
+    
+    color: white;
+    text-decoration:none;
+    }
+    
+    
+    
+    
+    
+    
+    a:hover {
+        color: rgba(235, 6, 6, 0.918);
+      }
+    
+    #active {
+        color:  rgba(235, 6, 6, 0.918);
+      }
+    .content{
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        margin-top: 75px;
+        color: rgb(209, 40, 40);
+        font-size: 30px;
+        font-weight: bold;
+    
+    }
+    
+    
+    
+    .img{
+    
+         
+       max-width: 800px; 
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: 10px;
+        
+    }
+    
+    video{
+    
+        
+       
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: 75px;
+        
+    
+    }
+    
+    #email{
+    
+        width: 40px; 
+        height: 40px;
+        margin: auto;
+        
+    }
+    #instagram{
+        
+        width: 40px; 
+        height: 40px;
+        margin: auto;
+        
+        
+        
+    
+    }
+    
+    #instagram:hover {
+        
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    
+    }
+    
+    #email:hover {
+        
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+        
+    
+    }
+    
+    .ftext {
+    
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+    }
+    
+    .container{
+    
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        
+        
+        }
+    
+       
+    
+    input[type=text], select, textarea {
+    background-color: rgb(197, 190, 190);
+    margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        border: none;
+    
+    
+    
+    }
+    ::placeholder{color: white;}
+    
+    
+    input[type=submit] {
+        background-color: rgb(197, 190, 190);
+        color: white;
+        
+        border: none;
+        margin-top: 5px;
+        cursor: pointer;
+      }
+    
+    #disclaimer {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 0px;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 100px;
+        color:rgb(197, 190, 190) ;
+        font-size: 7px;
+    }
+    
+    
+    
+    
+    
+    
+
+}
+@media screen and (min-width: 1024px)  {
+
+  body {
+
+    font-family: sans-serif;
+    background-image: url("bg.png");
+    background-repeat: repeat;
+    text-align: center;
+    
+    }
+    
+    nav {
+    
+        
+      float: right;
+        position: sticky;
+      top: 0px;
+        background-color: black;
+        text-align: right;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+        
+       
+        
+    }
+    
+    
+      
+      .kreis {
+    
+        
+        background-color: rgb(209, 40, 40);
+        height: 800px;
+        width: 800px;
+        border-radius: 50%;
+        margin: -450px auto auto auto;
+        color: white;
+        text-align: center;
+      }
+    
+      #ueberschrift{
+    
+        padding-top: 45%;
+        font-size: 150px;
+        margin-bottom: 5px;
+    
+    
+      }
+    
+    
+      #kreisunter{
+    
+        font-size: 50px;
+        padding-left: 50.5%;
+        text-align: left;
+        margin-top: -25px;
+        margin-bottom: 10px;
+    
+      }
+    
+      #kreisunterunter{
+    
+        padding-left: 51%;
+        padding-right: 20%;
+        margin-top: 5px;
+        text-align: left;
+    
+      }
+    a{
+    
+    color: white;
+    text-decoration:none;
+    }
+    
+    
+    
+    
+    
+    
+    a:hover {
+        color: rgba(235, 6, 6, 0.918);
+      }
+    
+    #active {
+        color:  rgba(235, 6, 6, 0.918);
+      }
+    .content{
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        margin-top: 75px;
+        color: rgb(209, 40, 40);
+        font-size: 30px;
+        font-weight: bold;
+    
+    }
+    
+    
+    
+    .img{
+    
+         
+       max-width: 800px; 
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: 10px;
+        
+    }
+    
+    video{
+    
+        
+       
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-top: 75px;
+        
+    
+    }
+    
+    #email{
+    
+        width: 40px; 
+        height: 40px;
+        margin: auto;
+        
+    }
+    #instagram{
+        
+        width: 40px; 
+        height: 40px;
+        margin: auto;
+        
+        
+        
+    
+    }
+    
+    #instagram:hover {
+        
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    
+    }
+    
+    #email:hover {
+        
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+        
+    
+    }
+    
+    .ftext {
+    
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+    }
+    
+    .container{
+    
+        display: grid;
+        justify-content: left;
+        align-items: left;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        
+        
+        }
+    
+       
+    
+    input[type=text], select, textarea {
+    background-color: rgb(197, 190, 190);
+    margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        border: none;
+    
+    
+    
+    }
+    ::placeholder{color: white;}
+    
+    
+    input[type=submit] {
+        background-color: rgb(197, 190, 190);
+        color: white;
+        
+        border: none;
+        margin-top: 5px;
+        cursor: pointer;
+      }
+    
+    #disclaimer {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 0px;
+        font-family: sans-serif;
+        text-align: left;
+        max-width: 100px;
+        color:rgb(197, 190, 190) ;
+        font-size: 7px;
+    }
+    
+    
+    
+    
+    
+    
+
+}
