@@ -1073,59 +1073,48 @@
     
     
       
-    .kreis {
+      .kreis {
     
         
-
-        
-      background-color: rgb(209, 40, 40);
-      height: 0;
-      width: 100%;
-      border-radius: 50%;
-      margin: -50% auto auto auto;
-      color: white;
+        background-color: rgb(209, 40, 40);
+        height: 800px;
+        width: 800px;
+        border-radius: 50%;
+        margin: -400px auto auto auto;
+        color: white;
+        text-align: center;
+        padding-bottom: 0%;
+      }
       
-      padding-bottom: 100%;
-    }
-    .inhalt{
-      margin: -40% auto auto auto;
     
-padding-top: 50%;
-text-align: center;
-width: 100%;
-
-    }
+      #ueberschrift{
     
-    #ueberschrift{
+        padding-top: 40%;
+        font-size: 120px;
+        margin-bottom: 5px;
     
-      font-size: 500%;
-      margin: -40% auto auto auto;
-      padding-top: 40%;
-      text-align: center;
-      width: 100%;
-  
-    }
-  
-  
-    #kreisunter{
-  
-      font-size: 300%;
-      padding-left: 50.5%;
-      text-align: left;
-     
-      margin-bottom: 0.625em;
-  
-    }
-  
-    #kreisunterunter{
-  
-      font-size: 110%;
-      padding-left: 51%;
-      padding-right: 20%;
-      margin-top: 0.313em;
-      text-align: left;
-  
-    }
+    
+      }
+    
+    
+      #kreisunter{
+    
+        font-size: 50px;
+        padding-left: 50.5%;
+        text-align: left;
+        margin-top: -25px;
+        margin-bottom: 10px;
+    
+      }
+    
+      #kreisunterunter{
+    
+        padding-left: 51%;
+        padding-right: 20%;
+        margin-top: 5px;
+        text-align: left;
+    
+      }
     a{
     
     color: white;
@@ -1288,6 +1277,7 @@ width: 100%;
         color:rgb(197, 190, 190) ;
         font-size: 7px;
     }
+    
     
     
     
