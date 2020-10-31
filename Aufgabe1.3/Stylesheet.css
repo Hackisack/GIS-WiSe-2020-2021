@@ -1,569 +1,340 @@
-
-
-  body {
-
+body {
     font-family: sans-serif;
     background-image: url("bg.png");
     background-repeat: repeat;
     text-align: center;
-    
-    }
-    
-    nav {
-    
-        
-      
-      position: sticky;
-      top: 0px;
-      background-color: black;
-        text-align: center;
-        border: 0.125em solid black;
-        border-radius: 0.313em;
-        padding-left: 0.125em;
-        padding-right: 0.125em;
-        padding-top: 0.125em;
-        margin-top: -2em;
-        
-       
-        
-    }
-    
+}
 
+nav {
+    position: sticky;
+    top: 0px;
+    background-color: black;
+    text-align: center;
+    border: 0.125em solid black;
+    border-radius: 0.313em;
+    padding-left: 0.125em;
+    padding-right: 0.125em;
+    padding-top: 0.125em;
+    margin-top: -2em;
+}
 
- 
-
-    
-      
-      .kreis {
-    
-        
-
-        
-        background-color: rgb(209, 40, 40);
-        height: 0;
-        width: 100%;
-        border-radius: 50%;
-        margin: -50% auto auto auto;
-        color: white;
-        padding-bottom: 100%;
-      }
-      .inhalt{
-        margin: -40% auto auto auto;
-      
-  padding-top: 50%;
-  text-align: center;
-  width: 100%;
-
-      }
-     
-    
-      #ueberschrift{
-    
-        font-size: 80%;
-        margin: -40% auto auto auto;
-        padding-top: 50%;
-        text-align: center;
-        width: 100%;
-    
-      }
-    
-    
-      #kreisunter{
-    
-        font-size: 40%;
-        
-        text-align: center;
-       
-        margin-bottom: 0.625em;
-    
-      }
-    
-      #kreisunterunter{
-    
-        font-size: 20%;
-        padding-left: 20%;
-        padding-right: 20%;
-        margin-top: 0.313em;
-        text-align: center;
-    
-      }
-    a{
-    
+.kreis {
+    background-color: rgb(209, 40, 40);
+    height: 0;
+    width: 100%;
+    border-radius: 50%;
+    margin: -50% auto auto auto;
     color: white;
-    text-decoration:none;
-    }
-    
-    
-    
-    
-    
-    
-    a:hover {
-        color: rgba(235, 6, 6, 0.918);
-      }
-    
-    #active {
-        color:  rgba(235, 6, 6, 0.918);
-      }
-    .content{
-        display: grid;
-        justify-content: left;
-        align-items: left;
-        font-family: sans-serif;
-        text-align: left;
-        width: 100%;
-        height: auto;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 1.25em;
-        margin-top: 4.688em;
-        color: rgb(209, 40, 40);
-        font-size: 1.875em;
-        font-weight: bold;
-    
-    }
- 
-    
-    
-    
-    .img{
-    
-         
-        width: 100%; 
-        height: auto;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: auto;
-        margin-top: 0.625em;
-        
-    }
-    
-    video{
-    
-        
-       
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: auto;
-        margin-top: 4.688em;
-        
-    
-    }
-    
-    #email{
-    
-      width: 5%; 
-      height: 5%;
-        margin: auto;
-        
-    }
-    #instagram{
-        
-        width: 5%; 
-        height: 5%;
-        margin: auto;
-        
-        
-        
-    
-    }
-    
-    #instagram:hover {
-        
-        -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-        transform: scale(1.2);
-    
-    }
-    
-    #email:hover {
-        
-        -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-        transform: scale(1.2);
-        
-    
-    }
-    
-    .ftext {
-    
-        display: grid;
-        justify-content: left;
-        align-items: left;
-        font-family: sans-serif;
-        text-align: left;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        color: rgb(0, 0, 0);
-        font-size: 1.125em;
-    }
-    
-    .container{
-    
-        display: grid;
-        justify-content: left;
-        align-items: left;
-        font-family: sans-serif;
-        text-align: left;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 1.25em;
-        margin-top: 1.25em;
-        
-        
-        }
-    
-       
-    
-    input[type=text], select, textarea {
+    padding-bottom: 100%;
+}
+
+.inhalt {
+    margin: -40% auto auto auto;
+    padding-top: 50%;
+    text-align: center;
+    width: 100%;
+}
+
+#ueberschrift {
+    font-size: 80%;
+    margin: -40% auto auto auto;
+    padding-top: 50%;
+    text-align: center;
+    width: 100%;
+}
+
+#kreisunter {
+    font-size: 40%;
+    text-align: center;
+    margin-bottom: 0.625em;
+}
+
+#kreisunterunter {
+    font-size: 20%;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 0.313em;
+    text-align: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(235, 6, 6, 0.918);
+}
+
+#active {
+    color: rgba(235, 6, 6, 0.918);
+}
+
+.content {
+    display: grid;
+    justify-content: left;
+    align-items: left;
+    font-family: sans-serif;
+    text-align: left;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.25em;
+    margin-top: 4.688em;
+    color: rgb(209, 40, 40);
+    font-size: 1.875em;
+    font-weight: bold;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 0.625em;
+}
+
+video {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 4.688em;
+}
+
+#email {
+    width: 5%;
+    height: 5%;
+    margin: auto;
+}
+
+#instagram {
+    width: 5%;
+    height: 5%;
+    margin: auto;
+}
+
+#instagram:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+#email:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.ftext {
+    display: grid;
+    justify-content: left;
+    align-items: left;
+    font-family: sans-serif;
+    text-align: left;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(0, 0, 0);
+    font-size: 1.125em;
+}
+
+.container {
+    display: grid;
+    justify-content: left;
+    align-items: left;
+    font-family: sans-serif;
+    text-align: left;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.25em;
+    margin-top: 1.25em;
+}
+
+input[type=text] {
     background-color: rgb(197, 190, 190);
     margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 0.313em;
-        margin-top: 0.313em;
-        border: none;
-    
-    
-    
-    }
-    ::placeholder{color: white;}
-    
-    
-    input[type=submit] {
-        background-color: rgb(197, 190, 190);
-        color: white;
-        
-        border: none;
-        margin-top: 0.313em;
-        cursor: pointer;
-      }
-    
-    #disclaimer {
-        margin-top: 0.313em;
-        margin-bottom: 0.313em;
-        margin-left: 0px;
-        font-family: sans-serif;
-        text-align: left;
-        max-width: 6.25em;
-        color:rgb(197, 190, 190) ;
-        font-size: 0.438em;
-    }
+    margin-right: auto;
+    margin-bottom: 0.313em;
+    margin-top: 0.313em;
+    border: none;
+}
 
+ ::placeholder {
+    color: white;
+}
+
+input[type=submit] {
+    background-color: rgb(197, 190, 190);
+    color: white;
+    border: none;
+    margin-top: 0.313em;
+    cursor: pointer;
+}
+
+#button:hover {
+    background-color: black;
+}
+
+#disclaimer {
+    margin-top: 0.313em;
+    margin-bottom: 0.313em;
+    margin-left: 0px;
+    font-family: sans-serif;
+    text-align: left;
+    max-width: 6.25em;
+    color: rgb(197, 190, 190);
+    font-size: 0.438em;
+}
+
+u {
+    color: rgb(209, 40, 40);
+}
+
+#Ich {
+    margin-top: 5em;
+}
+
+#Ich:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+iframe {
+    margin-top: 3em;
+}
 
 @media screen and (min-width: 350px) {
-
- 
-     
-     
-    
-      #ueberschrift{
-    
+    #ueberschrift {
         font-size: 100%;
-       
-       
-    
-      }
-    
-    
-      #kreisunter{
-    
+    }
+    #kreisunter {
         font-size: 80%;
         padding-left: 50.5%;
         text-align: left;
-       
-       
-    
-      }
-    
-      #kreisunterunter{
-    
+    }
+    #kreisunterunter {
         font-size: 40%;
         padding-left: 51%;
         padding-right: 20%;
-       
         text-align: left;
-    
-      }   
-
+    }
 }
+
 @media screen and (min-width: 600px) {
-
- 
-   
-    
-
-
- 
-
-    
-      
-
-    
-      #ueberschrift{
-    
+    #ueberschrift {
         font-size: 250%;
-       
-        
-    
-      }
-    
-    
-      #kreisunter{
-    
+    }
+    #kreisunter {
         font-size: 100%;
         padding-left: 50.5%;
         text-align: left;
-       
-       
-    
-      }
-    
-      #kreisunterunter{
-    
+    }
+    #kreisunterunter {
         font-size: 60%;
         padding-left: 51%;
-        
-        
         text-align: left;
-    
-      }   
-    
-
+    }
 }
+
 @media screen and (min-width: 900px) {
-
-
-    
-
-
- 
-
-    
-      
-   
-     
-    
-      #ueberschrift{
-    
+    #ueberschrift {
         font-size: 300%;
-      
-    
-      }
-    
-    
-      #kreisunter{
-    
+    }
+    #kreisunter {
         font-size: 200%;
         padding-left: 50.5%;
         text-align: left;
-       
-      
-    
-      }
-    
-      #kreisunterunter{
-    
+    }
+    #kreisunterunter {
         font-size: 100%;
         padding-left: 51%;
-       
-        
         text-align: left;
-    
-      }
-    
-  
-
+    }
 }
-@media screen and (min-width: 1024px)  {
 
- 
-    
-  nav {
-  
-      
-    float: right;
-     
-     
-      text-align: right;
-      border: 2px solid black;
-      border-radius: 5px;
-      padding-left: 2px;
-      padding-right: 2px;
-      padding-top: 2px;
-      
-     
-      
-  }
-  
-  
-    
+@media screen and (min-width: 1024px) {
+    nav {
+        float: right;
+        text-align: right;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+    }
     .kreis {
-  
-      
-     
-      height: 800px;
-      width: 800px;
-      border-radius: 50%;
-      margin: -400px auto auto auto;
-     
-      text-align: center;
-      padding-bottom: 0%;
+        height: 800px;
+        width: 800px;
+        border-radius: 50%;
+        margin: -400px auto auto auto;
+        text-align: center;
+        padding-bottom: 0%;
     }
-    
-  
-    #ueberschrift{
-  
-      padding-top: 40%;
-      font-size: 120px;
-      margin-bottom: 5px;
-  
-  
+    #ueberschrift {
+        padding-top: 40%;
+        font-size: 120px;
+        margin-bottom: 5px;
     }
-  
-  
-    #kreisunter{
-  
-      font-size: 50px;
-      padding-left: 50.5%;
-      text-align: left;
-      margin-top: -25px;
-      margin-bottom: 10px;
-  
+    #kreisunter {
+        font-size: 50px;
+        padding-left: 50.5%;
+        text-align: left;
+        margin-top: -25px;
+        margin-bottom: 10px;
     }
-  
-    #kreisunterunter{
-  
-      padding-left: 51%;
-      
-      margin-top: 5px;
-      text-align: left;
-  
+    #kreisunterunter {
+        padding-left: 51%;
+        margin-top: 5px;
+        text-align: left;
     }
-
-  
-  
-  
-  
-  
-  
-  .content{
-     
-      max-width: 800px;
-    
-      margin-bottom: 20px;
-      margin-top: 75px;
-     
-      font-size: 30px;
-     
-  
-  }
-  
-  
-  
-  .img{
-  
-       
-     max-width: 800px; 
-      
-      
-    
-      margin-top: 10px;
-      
-  }
-  
-  video{
-  
-      
-     
-    
-      margin-top: 75px;
-      
-  
-  }
-  
-  #email{
-  
-      width: 40px; 
-      height: 40px;
-     
-      
-  }
-  #instagram{
-      
-      width: 40px; 
-      height: 40px;
-      
-      
-      
-      
-  
-  }
-  
- 
-  
-  .ftext {
-  
-     
-      max-width: 800px;
-      
-      
-      font-size: 18px;
-  }
-  
-  .container{
-  
-    
-      max-width: 800px;
-      
-      margin-bottom: 20px;
-      margin-top: 20px;
-      
-      
-      }
-  
-     
-  
-  input[type=text], select, textarea {
-  
-  
-     
-      margin-bottom: 5px;
-      margin-top: 5px;
-     
-  
-  
-  
-  }
-  
-  
-  
-  input[type=submit] {
-     
-      
-     
-      margin-top: 5px;
-    
+    .content {
+        max-width: 800px;
+        margin-bottom: 20px;
+        margin-top: 75px;
+        font-size: 30px;
     }
-  
-  #disclaimer {
-      margin-top: 5px;
-      margin-bottom: 5px;
-      
-     
-    
-      max-width: 100px;
-     
-      font-size: 7px;
-  }
-  
-  
-  
-  
-  
-  
-  
-
+    .img {
+        max-width: 800px;
+        margin-top: 10px;
+    }
+    video {
+        margin-top: 75px;
+    }
+    #email {
+        width: 40px;
+        height: 40px;
+    }
+    #instagram {
+        width: 40px;
+        height: 40px;
+    }
+    .ftext {
+        max-width: 800px;
+        font-size: 18px;
+    }
+    .container {
+        max-width: 800px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    input[type=text],
+    select,
+    textarea {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    input[type=submit] {
+        margin-top: 5px;
+    }
+    #disclaimer {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        max-width: 100px;
+        font-size: 7px;
+    }
 }
