@@ -104,25 +104,13 @@ video {
     margin-top: 4.688em;
 }
 
-#email {
+a img {
     width: 5%;
     height: 5%;
     margin: auto;
 }
 
-#instagram {
-    width: 5%;
-    height: 5%;
-    margin: auto;
-}
-
-#instagram:hover {
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-#email:hover {
+a img:hover {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2);
@@ -175,7 +163,7 @@ input[type=submit] {
     cursor: pointer;
 }
 
-#button:hover {
+#button:focus {
     background-color: black;
 }
 
@@ -206,6 +194,10 @@ u {
 
 iframe {
     margin-top: 3em;
+}
+
+ul>li {
+    list-style: circle;
 }
 
 @media screen and (min-width: 350px) {
