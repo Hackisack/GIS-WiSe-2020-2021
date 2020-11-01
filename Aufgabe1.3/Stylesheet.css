@@ -194,6 +194,9 @@ u {
 
 iframe {
     margin-top: 3em;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 ul>li {
