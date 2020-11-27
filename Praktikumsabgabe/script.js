@@ -1,11 +1,13 @@
 "use strict";
 var Abgabe;
 (function (Abgabe) {
+    let buttondiv = document.getElementById("dropdown-content");
     let bilddiv = document.getElementById("Bild");
     Abgabe.nextpage = "";
     let choose = "";
     let maxlaenge = 0;
     let saveidentifier = "";
+    let imagecounter = 3;
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "erster_schritt01.html") {
         choose = "bilder/oben/";
         saveidentifier = "auswahloben";
@@ -28,9 +30,18 @@ var Abgabe;
         auswahl(JSON.parse(sessionStorage.getItem("auswahloben")).form, "bilder/oben/");
         auswahl(JSON.parse(sessionStorage.getItem("auswahlmitte")).form, "bilder/mitte/");
     }
-    document.getElementById("form1").addEventListener("click", function () { resetform(); auswahl("1.png", choose); });
-    document.getElementById("form2").addEventListener("click", function () { resetform(); auswahl("2.png", choose); });
-    document.getElementById("form3").addEventListener("click", function () { resetform(); auswahl("3.png", choose); });
+    for (let x = 1; x <= imagecounter; x++) {
+        let a = document.createElement("a");
+        a.id = "form" + x;
+        a.innerText = "Form " + x;
+        buttondiv.appendChild(a);
+        let bildname = x + ".png";
+        let idname = "form" + x;
+        document.getElementById(idname).addEventListener("click", function () { resetform(); auswahl(bildname, choose); });
+    }
+    //document.getElementById("form1").addEventListener("click", function(): void {resetform(); auswahl("1.png", choose); });
+    //document.getElementById("form2").addEventListener("click", function(): void {resetform(); auswahl("2.png", choose); });
+    //document.getElementById("form3").addEventListener("click", function(): void {resetform(); auswahl("3.png", choose); });
     document.getElementById("weiter").disabled = true;
     document.getElementById("weiter").addEventListener("click", function () { window.open(Abgabe.nextpage, "_self"); });
     function save(form) {
@@ -45,10 +56,10 @@ var Abgabe;
         }
     }
     function auswahl(bild, choose) {
-        let myloc = new Image();
-        myloc.useMap = choose + bild;
+        let image = new Image();
+        image.useMap = choose + bild;
         let img = document.createElement("img");
-        img.setAttribute("src", myloc.useMap);
+        img.setAttribute("src", image.useMap);
         img.className = "generiert";
         bilddiv.appendChild(img);
         save(bild);

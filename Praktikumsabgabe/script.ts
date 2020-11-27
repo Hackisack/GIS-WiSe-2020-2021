@@ -4,11 +4,13 @@
 
 namespace Abgabe {
 
+let buttondiv: HTMLElement = document.getElementById("dropdown-content");
 let bilddiv: HTMLElement = document.getElementById("Bild");
 export let nextpage: string = "";
 let choose: string = "";
 let maxlaenge: number = 0;
 let saveidentifier: string = "";
+let imagecounter: number = 3;
 
 
 if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "erster_schritt01.html") {
@@ -37,16 +39,28 @@ auswahl(JSON.parse(sessionStorage.getItem("auswahlmitte")).form, "bilder/mitte/"
 }
  
 
+for (let x: number = 1; x <= imagecounter; x++) {
+
+
+  let a: HTMLElement = document.createElement("a");
+  a.id = "form" + x;
+  a.innerText = "Form " + x ;
+  buttondiv.appendChild(a);
+
+  let bildname: string = x + ".png";
+  let idname: string = "form" + x;
+  document.getElementById(idname).addEventListener("click", function(): void {resetform(); auswahl(bildname, choose); });
+
+}
 
 
 
 
+//document.getElementById("form1").addEventListener("click", function(): void {resetform(); auswahl("1.png", choose); });
 
-document.getElementById("form1").addEventListener("click", function(): void {resetform(); auswahl("1.png", choose); });
+//document.getElementById("form2").addEventListener("click", function(): void {resetform(); auswahl("2.png", choose); });
 
-document.getElementById("form2").addEventListener("click", function(): void {resetform(); auswahl("2.png", choose); });
-
-document.getElementById("form3").addEventListener("click", function(): void {resetform(); auswahl("3.png", choose); });
+//document.getElementById("form3").addEventListener("click", function(): void {resetform(); auswahl("3.png", choose); });
 
 (<HTMLInputElement> document.getElementById("weiter")).disabled = true;
 document.getElementById("weiter").addEventListener("click", function(): void {window.open(nextpage, "_self"); });
@@ -83,10 +97,10 @@ export function auswahl( bild: string, choose: string): void {
     
    
    
-    let myloc: HTMLImageElement = new Image();  
-    myloc.useMap = choose + bild;  
+    let image: HTMLImageElement = new Image();  
+    image.useMap = choose + bild;  
     let img: HTMLImageElement = document.createElement("img");  
-    img.setAttribute("src", myloc.useMap);  
+    img.setAttribute("src", image.useMap);  
     img.className = "generiert";
     bilddiv.appendChild(img);  
     save(bild);
