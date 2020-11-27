@@ -1,0 +1,34 @@
+"use strict";
+var Abgabe;
+(function (Abgabe) {
+    let div = document.getElementById("Bild");
+    let a = JSON.parse(sessionStorage.getItem("auswahloben"));
+    let b = JSON.parse(sessionStorage.getItem("auswahlmitte"));
+    let c = JSON.parse(sessionStorage.getItem("auswahlunten"));
+    let endergebnis = { oben: a, mitte: b, unten: c };
+    console.log(endergebnis.oben.form);
+    console.log(endergebnis.mitte.form);
+    console.log(endergebnis.unten.form);
+    let oben = new Image();
+    oben.useMap = "bilder/oben/" + endergebnis.oben.form;
+    let imgoben = document.createElement("img");
+    imgoben.setAttribute("src", oben.useMap);
+    imgoben.id = "endeoben";
+    div.appendChild(imgoben);
+    let mitte = new Image();
+    mitte.useMap = "bilder/mitte/" + endergebnis.mitte.form;
+    let imgmitte = document.createElement("img");
+    imgmitte.setAttribute("src", mitte.useMap);
+    imgmitte.id = "endemitte";
+    div.appendChild(imgmitte);
+    let unten = new Image();
+    unten.useMap = "bilder/unten/" + endergebnis.unten.form;
+    let imgunten = document.createElement("img");
+    imgunten.setAttribute("src", unten.useMap);
+    imgunten.id = "endeunten";
+    div.appendChild(imgunten);
+    Abgabe.nextpage = "erster_schritt01.html";
+    document.getElementById("weiter").disabled = false;
+    document.getElementById("weiter").addEventListener("click", function () { window.open(Abgabe.nextpage, "_self"); });
+})(Abgabe || (Abgabe = {}));
+//# sourceMappingURL=script4.js.map
