@@ -39,9 +39,6 @@ var Abgabe;
         let idname = "form" + x;
         document.getElementById(idname).addEventListener("click", function () { resetform(); auswahl(bildname, choose); });
     }
-    //document.getElementById("form1").addEventListener("click", function(): void {resetform(); auswahl("1.png", choose); });
-    //document.getElementById("form2").addEventListener("click", function(): void {resetform(); auswahl("2.png", choose); });
-    //document.getElementById("form3").addEventListener("click", function(): void {resetform(); auswahl("3.png", choose); });
     document.getElementById("weiter").disabled = true;
     document.getElementById("weiter").addEventListener("click", function () { window.open(Abgabe.nextpage, "_self"); });
     function save(form) {

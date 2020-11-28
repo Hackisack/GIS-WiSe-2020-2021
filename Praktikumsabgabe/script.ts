@@ -4,6 +4,9 @@
 
 namespace Abgabe {
 
+
+
+
 let buttondiv: HTMLElement = document.getElementById("dropdown-content");
 let bilddiv: HTMLElement = document.getElementById("Bild");
 export let nextpage: string = "";
@@ -17,6 +20,7 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
 choose = "bilder/oben/";
 saveidentifier = "auswahloben";
 nextpage = "zweiter_schritt02.html";
+
 }
 
 
@@ -53,14 +57,6 @@ for (let x: number = 1; x <= imagecounter; x++) {
 
 }
 
-
-
-
-//document.getElementById("form1").addEventListener("click", function(): void {resetform(); auswahl("1.png", choose); });
-
-//document.getElementById("form2").addEventListener("click", function(): void {resetform(); auswahl("2.png", choose); });
-
-//document.getElementById("form3").addEventListener("click", function(): void {resetform(); auswahl("3.png", choose); });
 
 (<HTMLInputElement> document.getElementById("weiter")).disabled = true;
 document.getElementById("weiter").addEventListener("click", function(): void {window.open(nextpage, "_self"); });
