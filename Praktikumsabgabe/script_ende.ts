@@ -14,10 +14,6 @@ namespace Abgabe {
 
     let endergebnis: Objekt = { oben: a, mitte: b, unten: c };
 
-    console.log(endergebnis.oben.form);
-    console.log(endergebnis.mitte.form);
-    console.log(endergebnis.unten.form);
-
 
     let oben: HTMLImageElement = new Image();
     oben.useMap = endergebnis.oben.link + endergebnis.oben.form;
