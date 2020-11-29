@@ -21,7 +21,7 @@ namespace Abgabe {
   async function getdata(): Promise<void> {
     let response: Response = await fetch("data.json");
     let data: any = await response.json();
-    console.log(data);
+    
 
 
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "erster_schritt01.html") {
@@ -50,7 +50,6 @@ namespace Abgabe {
       nextpage = "ende04.html";
       imagecounter = data.unten.length;
       maxlaenge = 2;
-      console.log(maxlaenge);
       auswahl(JSON.parse(sessionStorage.getItem("auswahloben")).form, "bilder/oben/");
       auswahl(JSON.parse(sessionStorage.getItem("auswahlmitte")).form, "bilder/mitte/");
       create_event();
