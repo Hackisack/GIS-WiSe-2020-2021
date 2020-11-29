@@ -29,7 +29,7 @@ namespace Abgabe {
       saveidentifier = "auswahloben";
       nextpage = "zweiter_schritt02.html";
       imagecounter = data.oben.length;
-      create_event();
+      create_event(data, "oben");
     }
 
 
@@ -40,7 +40,7 @@ namespace Abgabe {
       imagecounter = data.mitte.length;
       maxlaenge = 1;
       auswahl(JSON.parse(sessionStorage.getItem("auswahloben")).form, "bilder/oben/");
-      create_event();
+      create_event(data, "mitte");
     }
 
 
@@ -52,11 +52,11 @@ namespace Abgabe {
       maxlaenge = 2;
       auswahl(JSON.parse(sessionStorage.getItem("auswahloben")).form, "bilder/oben/");
       auswahl(JSON.parse(sessionStorage.getItem("auswahlmitte")).form, "bilder/mitte/");
-      create_event();
+      create_event(data , "unten");
     }
   }
 
-  function create_event(): void {
+  function create_event(data: any, seite: string): void {
 
     for (let x: number = 1; x <= imagecounter; x++) {
 
@@ -66,7 +66,12 @@ namespace Abgabe {
       a.innerText = "Form " + x;
       buttondiv.appendChild(a);
 
-      let bildname: string = x + ".png";
+      let bildname: string = "";
+      if (seite == "oben") {bildname = data.oben[x - 1].name; }
+      else if (seite == "mitte") {bildname = data.mitte[x - 1].name; }
+      else if (seite == "unten") {bildname = data.unten[x - 1].name; }
+
+     
       let idname: string = "form" + x;
       document.getElementById(idname).addEventListener("click", function (): void { resetform(); auswahl(bildname, choose); });
 

@@ -17,7 +17,7 @@ var Abgabe;
             saveidentifier = "auswahloben";
             Abgabe.nextpage = "zweiter_schritt02.html";
             imagecounter = data.oben.length;
-            create_event();
+            create_event(data, "oben");
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "zweiter_schritt02.html") {
             choose = data.mitte[0].link;
@@ -26,7 +26,7 @@ var Abgabe;
             imagecounter = data.mitte.length;
             maxlaenge = 1;
             auswahl(JSON.parse(sessionStorage.getItem("auswahloben")).form, "bilder/oben/");
-            create_event();
+            create_event(data, "mitte");
         }
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "dritter_schritt03.html") {
             choose = data.unten[0].link;
@@ -36,16 +36,25 @@ var Abgabe;
             maxlaenge = 2;
             auswahl(JSON.parse(sessionStorage.getItem("auswahloben")).form, "bilder/oben/");
             auswahl(JSON.parse(sessionStorage.getItem("auswahlmitte")).form, "bilder/mitte/");
-            create_event();
+            create_event(data, "unten");
         }
     }
-    function create_event() {
+    function create_event(data, seite) {
         for (let x = 1; x <= imagecounter; x++) {
             let a = document.createElement("a");
             a.id = "form" + x;
             a.innerText = "Form " + x;
             buttondiv.appendChild(a);
-            let bildname = x + ".png";
+            let bildname = "";
+            if (seite == "oben") {
+                bildname = data.oben[x - 1].name;
+            }
+            else if (seite == "mitte") {
+                bildname = data.mitte[x - 1].name;
+            }
+            else if (seite == "unten") {
+                bildname = data.unten[x - 1].name;
+            }
             let idname = "form" + x;
             document.getElementById(idname).addEventListener("click", function () { resetform(); auswahl(bildname, choose); });
         }
