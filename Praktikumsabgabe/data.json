@@ -1,0 +1,5 @@
+{
+    "oben": [{ "name": "1.png", "link": "bilder/oben/" }, { "name": "2.png", "link": "bilder/oben/" }, { "name": "3.png", "link": "bilder/oben/" }],
+    "mitte": [{ "name": "1.png", "link": "bilder/mitte/" }, { "name": "2.png", "link": "bilder/mitte/" }, { "name": "3.png", "link": "bilder/mitte/" }],
+    "unten": [{ "name": "1.png", "link": "bilder/unten/" }, { "name": "2.png", "link": "bilder/unten/" }, { "name": "3.png", "link": "bilder/unten/" }]
+}
