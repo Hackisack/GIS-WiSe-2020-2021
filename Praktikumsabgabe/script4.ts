@@ -46,7 +46,7 @@ div.appendChild(imgunten);
 
 
 
-send("http://gis-communication.herokuapp.com");
+send("https://gis-communication.herokuapp.com");
 
 async function send(url: string): Promise<void> {
     let query: URLSearchParams = new URLSearchParams(<any>sessionStorage);

@@ -28,7 +28,7 @@ var Abgabe;
     imgunten.setAttribute("src", unten.useMap);
     imgunten.id = "endeunten";
     div.appendChild(imgunten);
-    send("http://gis-communication.herokuapp.com");
+    send("https://gis-communication.herokuapp.com");
     async function send(url) {
         let query = new URLSearchParams(sessionStorage);
         url = url + "?" + query.toString();
