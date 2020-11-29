@@ -37,7 +37,6 @@ var Abgabe;
         async function retrieve(_url) {
             let response = await fetch(_url);
             let answer = await response.json();
-            console.log(response);
             if (answer.error != undefined) {
                 h2server.innerText = answer.error;
                 h2server.style.color = "red";

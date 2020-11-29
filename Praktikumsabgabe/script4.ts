@@ -59,7 +59,6 @@ async function send(url: string): Promise<void> {
         let response: any = await fetch(_url);
         let answer: any = await response.json();
      
-        console.log(response);
         if(answer.error != undefined){h2server.innerText = answer.error;  h2server.style.color = "red"; }
         else {h2server.innerText = answer.message; h2server.style.color = "green"; }
       }
