@@ -51,4 +51,4 @@ var Abgabe;
     document.getElementById("weiter").disabled = false;
     document.getElementById("weiter").addEventListener("click", function () { window.open(Abgabe.nextpage, "_self"); });
 })(Abgabe || (Abgabe = {}));
-//# sourceMappingURL=script4.js.map
+//# sourceMappingURL=script_ende.js.map
