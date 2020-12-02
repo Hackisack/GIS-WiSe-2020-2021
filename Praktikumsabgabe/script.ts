@@ -20,12 +20,12 @@ namespace Abgabe {
 
   async function getdata(): Promise<void> {
     let response: Response = await fetch("data.json");
-    let data: any = await response.json();
+    let json: string = JSON.stringify( await response.json());
+    let data: Daten = JSON.parse(json);
     
 
-
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "erster_schritt01.html") {
-      choose = data.oben[0].link;
+      choose = data.oben[0].link ;
       saveidentifier = "auswahloben";
       nextpage = "zweiter_schritt02.html";
       imagecounter = data.oben.length;
@@ -56,7 +56,7 @@ namespace Abgabe {
     }
   }
 
-  function create_event(data: any, seite: string): void {
+  function create_event(data: Daten, seite: string): void {
 
     for (let x: number = 1; x <= imagecounter; x++) {
 
@@ -79,6 +79,14 @@ namespace Abgabe {
 
     (<HTMLInputElement>document.getElementById("weiter")).disabled = true;
     document.getElementById("weiter").addEventListener("click", function (): void { window.open(nextpage, "_self"); });
+
+  }
+
+  export interface Daten {
+
+    oben: [{name: string, link: string}];
+    mitte: [{name: string, link: string}];
+    unten: [{name: string, link: string}];
 
   }
 

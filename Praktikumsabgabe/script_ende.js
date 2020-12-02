@@ -33,13 +33,14 @@ var Abgabe;
         retrieve(url);
         async function retrieve(_url) {
             let response = await fetch(_url);
-            let answer = await response.json();
-            if (answer.error != undefined) {
-                h2server.innerText = answer.error;
+            let answer = JSON.stringify(await response.json());
+            let data = JSON.parse(answer);
+            if (data.error != undefined) {
+                h2server.innerText = "Antwort des Servers: " + data.error;
                 h2server.style.color = "red";
             }
             else {
-                h2server.innerText = answer.message;
+                h2server.innerText = "Antwort des Servers: " + data.message;
                 h2server.style.color = "green";
             }
         }

@@ -52,11 +52,12 @@ namespace Abgabe {
         retrieve(url);
 
         async function retrieve(_url: RequestInfo): Promise<void> {
-            let response: any = await fetch(_url);
-            let answer: any = await response.json();
+            let response: Response = await fetch(_url);
+            let answer: string = JSON.stringify(await response.json());
+            let data: Answer = JSON.parse(answer);
 
-            if (answer.error != undefined) { h2server.innerText = answer.error; h2server.style.color = "red"; }
-            else { h2server.innerText = answer.message; h2server.style.color = "green"; }
+            if (data.error != undefined) { h2server.innerText = "Antwort des Servers: " + data.error; h2server.style.color = "red"; }
+            else { h2server.innerText = "Antwort des Servers: " + data.message; h2server.style.color = "green"; }
         }
 
     }
@@ -67,6 +68,15 @@ namespace Abgabe {
     nextpage = "erster_schritt01.html";
     (<HTMLInputElement>document.getElementById("weiter")).disabled = false;
     document.getElementById("weiter").addEventListener("click", function (): void { window.open(nextpage, "_self"); });
+
+    interface Answer {
+
+        error: string;
+        message: string;
+
+    }
+
+
 
 }
 

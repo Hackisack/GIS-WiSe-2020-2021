@@ -11,7 +11,8 @@ var Abgabe;
     let imagecounter = 0;
     async function getdata() {
         let response = await fetch("data.json");
-        let data = await response.json();
+        let json = JSON.stringify(await response.json());
+        let data = JSON.parse(json);
         if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "erster_schritt01.html") {
             choose = data.oben[0].link;
             saveidentifier = "auswahloben";
