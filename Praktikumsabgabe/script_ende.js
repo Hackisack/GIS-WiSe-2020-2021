@@ -1,30 +1,32 @@
 "use strict";
 var Abgabe;
 (function (Abgabe) {
-    let h2server = document.getElementById("ServerAntwort");
+    let h2Server = document.getElementById("ServerAntwort");
     let div = document.getElementById("Bild");
-    let a = JSON.parse(sessionStorage.getItem("auswahloben"));
-    let b = JSON.parse(sessionStorage.getItem("auswahlmitte"));
-    let c = JSON.parse(sessionStorage.getItem("auswahlunten"));
-    let endergebnis = { oben: a, mitte: b, unten: c };
+    let auswahlOben = JSON.parse(sessionStorage.getItem("auswahloben"));
+    let auswahlMitte = JSON.parse(sessionStorage.getItem("auswahlmitte"));
+    let auswahlUnten = JSON.parse(sessionStorage.getItem("auswahlunten"));
+    let endergebnis = { oben: auswahlOben, mitte: auswahlMitte, unten: auswahlUnten };
+    //Bilder anzeigen
     let oben = new Image();
     oben.useMap = endergebnis.oben.link + endergebnis.oben.form;
-    let imgoben = document.createElement("img");
-    imgoben.setAttribute("src", oben.useMap);
-    imgoben.id = "endeoben";
-    div.appendChild(imgoben);
+    let imgOben = document.createElement("img");
+    imgOben.setAttribute("src", oben.useMap);
+    imgOben.id = "endeoben";
+    div.appendChild(imgOben);
     let mitte = new Image();
     mitte.useMap = endergebnis.mitte.link + endergebnis.mitte.form;
-    let imgmitte = document.createElement("img");
-    imgmitte.setAttribute("src", mitte.useMap);
-    imgmitte.id = "endemitte";
-    div.appendChild(imgmitte);
+    let imgMitte = document.createElement("img");
+    imgMitte.setAttribute("src", mitte.useMap);
+    imgMitte.id = "endemitte";
+    div.appendChild(imgMitte);
     let unten = new Image();
     unten.useMap = endergebnis.unten.link + endergebnis.unten.form;
-    let imgunten = document.createElement("img");
-    imgunten.setAttribute("src", unten.useMap);
-    imgunten.id = "endeunten";
-    div.appendChild(imgunten);
+    let imgUnten = document.createElement("img");
+    imgUnten.setAttribute("src", unten.useMap);
+    imgUnten.id = "endeunten";
+    div.appendChild(imgUnten);
+    //Serverkommunikation
     send("https://gis-communication.herokuapp.com");
     async function send(url) {
         let query = new URLSearchParams(sessionStorage);
@@ -36,17 +38,18 @@ var Abgabe;
             let answer = JSON.stringify(await response.json());
             let data = JSON.parse(answer);
             if (data.error != undefined) {
-                h2server.innerText = "Antwort des Servers: " + data.error;
-                h2server.style.color = "red";
+                h2Server.innerText = "Antwort des Servers: " + data.error;
+                h2Server.style.color = "red";
             }
             else {
-                h2server.innerText = "Antwort des Servers: " + data.message;
-                h2server.style.color = "green";
+                h2Server.innerText = "Antwort des Servers: " + data.message;
+                h2Server.style.color = "green";
             }
         }
     }
-    Abgabe.nextpage = "erster_schritt01.html";
+    //weiterleiten
+    Abgabe.nextPage = "erster_schritt01.html";
     document.getElementById("weiter").disabled = false;
-    document.getElementById("weiter").addEventListener("click", function () { window.open(Abgabe.nextpage, "_self"); });
+    document.getElementById("weiter").addEventListener("click", function () { window.open(Abgabe.nextPage, "_self"); });
 })(Abgabe || (Abgabe = {}));
 //# sourceMappingURL=script_ende.js.map
