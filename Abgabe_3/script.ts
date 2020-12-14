@@ -2,7 +2,7 @@
 namespace Abgabe3 {
 
 let submit: HTMLElement = document.getElementById("submit");
-let form: Form = document.getElementById("form");
+let form: HTMLFormElement = document.getElementById("form");
 submit.addEventListener("click", send);
 
 async function send(): Promise<void> {
