@@ -12,6 +12,7 @@ var Abgabe3;
             let formstring = new URLSearchParams(formdata);
             console.log(formstring);
             let x = 0;
+            antwort.innerText = "";
             for (let entry of formstring.values()) {
                 if (entry != "") {
                     x++;
@@ -50,6 +51,7 @@ var Abgabe3;
             let formdata = new FormData(form);
             let formstring = new URLSearchParams(formdata);
             let x = 0;
+            antwort.innerText = "";
             for (let entry of formstring.values()) {
                 if (entry != "") {
                     x++;
@@ -83,6 +85,7 @@ var Abgabe3;
         let antwort = document.getElementById("antwort");
         submit.addEventListener("click", send);
         async function send() {
+            antwort.innerText = "";
             //Senden und fetchen der Antwort
             fetch("https://giswise2020.herokuapp.com/", {
                 method: "POST"

@@ -21,6 +21,7 @@ function checkForm(): void {
   let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
   console.log(formstring);
   let x: number = 0;
+  antwort.innerText = "";
   
   for (let entry of formstring.values()) {
    if (entry != "") {x++; } 
@@ -75,6 +76,7 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
   let formdata: FormData = new FormData(form);
   let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
   let x: number = 0;
+  antwort.innerText = "";
   
   for (let entry of formstring.values()) {
    if (entry != "") {x++; } 
@@ -122,7 +124,7 @@ if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/")
   
   async function send(): Promise<void> {
   
-
+  antwort.innerText = "";
   //Senden und fetchen der Antwort
   fetch("https://giswise2020.herokuapp.com/", {
     method: "POST"
