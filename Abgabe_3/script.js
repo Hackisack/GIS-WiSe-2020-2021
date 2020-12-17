@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Abgabe3 = void 0;
 var Abgabe3;
 (function (Abgabe3) {
     if (window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1) == "index.html") {
@@ -98,5 +100,5 @@ var Abgabe3;
             });
         }
     }
-})(Abgabe3 || (Abgabe3 = {}));
+})(Abgabe3 = exports.Abgabe3 || (exports.Abgabe3 = {}));
 //# sourceMappingURL=script.js.map

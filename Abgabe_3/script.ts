@@ -1,5 +1,5 @@
 
-namespace Abgabe3 {
+export namespace Abgabe3 {
 
 
 
