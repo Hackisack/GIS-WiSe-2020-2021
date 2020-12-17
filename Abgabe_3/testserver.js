@@ -6,7 +6,7 @@ const querystring = require("querystring");
 const Mongo = require("mongodb");
 var P_3_1Server;
 (function (P_3_1Server) {
-    let orders;
+    let daten;
     let port = Number(process.env.PORT);
     if (!port)
         port = 8100;
@@ -24,8 +24,8 @@ var P_3_1Server;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        orders = mongoClient.db("Daten").collection("Collection");
-        console.log("Database connection ", orders != undefined);
+        daten = mongoClient.db("Daten").collection("Collection");
+        console.log("Database connection ", daten != undefined);
     }
     function handleListen() {
         console.log("Listening");
@@ -37,19 +37,76 @@ var P_3_1Server;
             _request.on("data", data => {
                 body += data.toString();
             });
-            _request.on("end", () => {
-                let jsonString = JSON.stringify(querystring.parse(body));
-                let order = querystring.parse(body);
-                _response.setHeader("content-type", "text/html; charset=utf-8");
-                _response.setHeader("Access-Control-Allow-Origin", "*");
-                _response.write(jsonString);
-                _response.end();
-                storeOrder(order);
+            _request.on("end", async () => {
+                let daten = querystring.parse(body);
+                if (JSON.stringify(daten) == "{}") {
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
+                    _response.setHeader("Access-Control-Allow-Origin", "*");
+                    _response.write(await retrieveNames());
+                    _response.end();
+                }
+                else if (JSON.stringify(daten).startsWith("{\"Email")) {
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
+                    _response.setHeader("Access-Control-Allow-Origin", "*");
+                    _response.write(await checkLogin(daten));
+                    _response.end();
+                }
+                else {
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
+                    _response.setHeader("Access-Control-Allow-Origin", "*");
+                    _response.write(checkMail(await retrieve(), daten));
+                    _response.end();
+                }
             });
         }
     }
-    function storeOrder(_order) {
-        orders.insertOne(_order);
+    function checkMail(data, storeDaten) {
+        let _daten = "{" + "\"data\":[" + JSON.stringify(storeDaten) + "]}";
+        let datenObjekt = JSON.parse(_daten);
+        let allData = JSON.parse(data);
+        if (allData.data.length >= 1) {
+            for (let x = 0; x < allData.data.length; x++) {
+                if (allData.data[x].Email == datenObjekt.data[0].Email) {
+                    return "Die benutze Email befindet sich bereits in unserer Datenbank. Loggen Sie sich ein oder registrieren sie sich mit einer anderen.";
+                }
+            }
+        }
+        storeData(storeDaten);
+        return "Ihre Daten wurden erfolgreich gespeichert";
+    }
+    function storeData(_daten) {
+        daten.insertOne(_daten);
+    }
+    async function retrieve() {
+        let alleDaten = await daten.find().toArray();
+        let alleDatenString = "{" + "\"data\":" + JSON.stringify(alleDaten) + "}";
+        return alleDatenString;
+    }
+    async function retrieveNames() {
+        let alleDaten = await daten.find().toArray();
+        let alleDatenObjekt = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
+        let alleNamenString = "";
+        if (alleDatenObjekt.data.length < 1) {
+            return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  ";
+        }
+        for (let x = 0; x < alleDatenObjekt.data.length; x++) {
+            alleNamenString = alleNamenString + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+        }
+        return alleNamenString;
+    }
+    async function checkLogin(_daten) {
+        let alleDaten = await daten.find().toArray();
+        let alleDatenObjekt = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
+        let userdaten = "{" + "\"data\":[" + JSON.stringify(_daten) + "]}";
+        let datenObjekt = JSON.parse(userdaten);
+        if (alleDatenObjekt.data.length >= 1) {
+            for (let x = 0; x < alleDatenObjekt.data.length; x++) {
+                if (alleDatenObjekt.data[x].Email == datenObjekt.data[0].Email && (alleDatenObjekt.data[x].Password == datenObjekt.data[0].Password)) {
+                    return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname;
+                }
+            }
+        }
+        return "Die eingegebene Kombination aus Email und Passwort ist leider nicht in unserer Datenbank. Versuchen Sie es bitte erneut.";
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));
 //# sourceMappingURL=testserver.js.map
