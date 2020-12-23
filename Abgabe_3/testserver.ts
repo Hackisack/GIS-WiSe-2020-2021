@@ -174,7 +174,7 @@ export namespace P_3_1Server {
     return alleNamenString;
   }
 
-  
+
 
   async function checkLogin(_daten: Daten): Promise<string> {
     let alleDaten: string[] = await daten.find().toArray();
@@ -188,7 +188,7 @@ export namespace P_3_1Server {
 
       for (let x: number = 0; x < alleDatenObjekt.data.length; x++) {
 
-        if (alleDatenObjekt.data[x].Email == datenObjekt.data[0].Email && (alleDatenObjekt.data[x].Password == datenObjekt.data[0].Password)) { return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname; }
+        if (alleDatenObjekt.data[x].Email == datenObjekt.data[0].Email && (alleDatenObjekt.data[x].Password == datenObjekt.data[0].Password)) { return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + "."; }
 
       }
 

@@ -104,7 +104,7 @@ var P_3_1Server;
         if (alleDatenObjekt.data.length >= 1) {
             for (let x = 0; x < alleDatenObjekt.data.length; x++) {
                 if (alleDatenObjekt.data[x].Email == datenObjekt.data[0].Email && (alleDatenObjekt.data[x].Password == datenObjekt.data[0].Password)) {
-                    return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname;
+                    return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ".";
                 }
             }
         }
