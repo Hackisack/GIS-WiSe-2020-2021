@@ -164,11 +164,13 @@ export namespace P_3_1Server {
     let alleDaten: string[] = await daten.find().toArray();
     let alleDatenObjekt: AllData = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
     let alleNamenString: string = "";
+    let nummerierung: number = 1;
 
     if (alleDatenObjekt.data.length < 1) { return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  "; }
 
     for (let x: number = 0; x < alleDatenObjekt.data.length; x++) {
-      alleNamenString = alleNamenString + x++ + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+      alleNamenString = alleNamenString + nummerierung + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+      nummerierung++;
     }
 
     return alleNamenString;

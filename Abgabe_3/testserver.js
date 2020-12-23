@@ -88,11 +88,13 @@ var P_3_1Server;
         let alleDaten = await daten.find().toArray();
         let alleDatenObjekt = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
         let alleNamenString = "";
+        let nummerierung = 1;
         if (alleDatenObjekt.data.length < 1) {
             return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  ";
         }
         for (let x = 0; x < alleDatenObjekt.data.length; x++) {
-            alleNamenString = alleNamenString + x++ + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+            alleNamenString = alleNamenString + nummerierung + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+            nummerierung++;
         }
         return alleNamenString;
     }
