@@ -14,16 +14,13 @@ var Abgabe3;
         }
         function checkForm(_formSize) {
             let formdata = new FormData(form);
-            console.log(formdata);
             let formstring = new URLSearchParams(formdata);
-            console.log(formstring);
             let x = 0;
             antwort.innerText = "";
             for (let entry of formstring.values()) {
                 if (entry != "") {
                     x++;
                 }
-                console.log(entry);
             }
             if (x < _formSize) {
                 antwort.innerText = "Bitte füllen Sie das Formular vollständig aus";

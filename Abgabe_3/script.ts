@@ -20,15 +20,12 @@ namespace Abgabe3 {
 
     function checkForm(_formSize: number): void {
       let formdata: FormData = new FormData(form);
-      console.log(formdata);
       let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
-      console.log(formstring);
       let x: number = 0;
       antwort.innerText = "";
 
       for (let entry of formstring.values()) {
         if (entry != "") { x++; }
-        console.log(entry);
       }
 
       if (x < _formSize) { antwort.innerText = "Bitte füllen Sie das Formular vollständig aus"; }
