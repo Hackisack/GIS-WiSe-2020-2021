@@ -168,7 +168,7 @@ export namespace P_3_1Server {
     if (alleDatenObjekt.data.length < 1) { return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  "; }
 
     for (let x: number = 0; x < alleDatenObjekt.data.length; x++) {
-      alleNamenString = alleNamenString + x + 1 + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+      alleNamenString = alleNamenString + x++ + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
     }
 
     return alleNamenString;
