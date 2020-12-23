@@ -31,7 +31,6 @@ var P_3_1Server;
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
-        console.log("I hear voices!");
         if (_request.method == "POST") {
             let body = "";
             _request.on("data", data => {
@@ -39,18 +38,21 @@ var P_3_1Server;
             });
             _request.on("end", async () => {
                 let daten = querystring.parse(body);
+                //Alle User abfragen
                 if (JSON.stringify(daten) == "{}") {
                     _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     _response.write(await retrieveNames());
                     _response.end();
                 }
+                //Login
                 else if (JSON.stringify(daten).startsWith("{\"Email")) {
                     _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     _response.write(await checkLogin(daten));
                     _response.end();
                 }
+                //Registrierung
                 else {
                     _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
