@@ -110,7 +110,7 @@ var Pruefungsabgabe;
         insertdiv.innerHTML = "";
     }
     function buildSite(_data) {
-        inserthead.innerHTML = headercode;
+        inserthead.innerHTML += headercode;
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
             insertdiv.innerHTML = insertdiv.innerHTML + produktcode;
             produktbild[x].setAttribute("src", _data.produkte[x].produktbild);

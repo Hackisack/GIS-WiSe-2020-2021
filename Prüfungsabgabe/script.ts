@@ -187,7 +187,7 @@ namespace Pruefungsabgabe {
 
     function buildSite(_data: Daten): void {
 
-        inserthead.innerHTML = headercode;
+        inserthead.innerHTML += headercode;
 
 
         for (let x: number = 0; x < _data.produkte.length; x++) { //Build all Produkte
