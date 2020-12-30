@@ -130,17 +130,13 @@ namespace Pruefungsabgabe {
 
             body: formstring
         }).then(response => response.text())
-            .then(data => {
+            .then(async data => {
 
 
                 checkformresponse.innerText = data;
 
-                clearsite();
 
-                getdata();
-
-
-            })
+            }).then(clearsite).then(getdata)
             .catch((error) => {
                 console.error("Error:", error);
             });
