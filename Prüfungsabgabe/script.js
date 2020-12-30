@@ -113,6 +113,7 @@ var Pruefungsabgabe;
             reservebutton.addEventListener("click", function () { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
             reserveseitenhide.addEventListener("click", function () { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve)
                 reserveseitenhide.id = "reservehide"; });
+            console.log("ontime");
             reload++;
         }
     }

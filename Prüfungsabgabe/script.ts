@@ -188,6 +188,7 @@ namespace Pruefungsabgabe {
             savereserve.addEventListener("click", function callcheck(): void { checkForm(2, _data); });
             reservebutton.addEventListener("click", function (): void { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
             reserveseitenhide.addEventListener("click", function (): void { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve) reserveseitenhide.id = "reservehide"; });
+            console.log("ontime");
             reload++;
         }
 
