@@ -86,9 +86,10 @@ namespace Pruefungsabgabe {
         let data: Daten = JSON.parse(json);
         buildSite(data);
 
-
-        window.addEventListener("click", function (): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
-        savereserve.addEventListener("click", function (): void { checkForm(2, data); }, {once: true});
+        window.removeEventListener("click", function (): void { auswahlrefresh(data); });
+        window.addEventListener("click", function callrefresh(): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
+        savereserve.removeEventListener("click", function (): void { checkForm(2, data); });
+        savereserve.addEventListener("click", function (): void { checkForm(2, data); });
     }
 
 
@@ -143,7 +144,8 @@ namespace Pruefungsabgabe {
 //window.location.reload
     function clearsite(): void {
 
-        
+      
+      
         insertdiv.innerHTML = "";
 
     }
