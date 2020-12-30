@@ -133,7 +133,7 @@ namespace Pruefungsabgabe {
         });
 
         clearsite();
-        getdata();
+        
 
     }
 
@@ -142,6 +142,8 @@ namespace Pruefungsabgabe {
 
         insertdiv.innerHTML = "";
        
+        getdata();
+
     }
 
 

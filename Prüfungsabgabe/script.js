@@ -84,10 +84,10 @@ var Pruefungsabgabe;
             body: formstring
         });
         clearsite();
-        getdata();
     }
     function clearsite() {
         insertdiv.innerHTML = "";
+        getdata();
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte

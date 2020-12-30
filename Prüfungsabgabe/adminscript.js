@@ -71,10 +71,10 @@ var Pruefungsabgabe;
             body: formstring
         });
         clearsite();
-        getdata();
     }
     function clearsite() {
         tabelle.innerHTML = "";
+        getdata();
     }
 })(Pruefungsabgabe || (Pruefungsabgabe = {}));
 //# sourceMappingURL=adminscript.js.map

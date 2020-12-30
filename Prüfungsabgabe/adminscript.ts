@@ -115,7 +115,7 @@ namespace Pruefungsabgabe {
         });
 
         clearsite();
-        getdata();
+        
 
 
     }
@@ -123,6 +123,8 @@ namespace Pruefungsabgabe {
     function clearsite(): void {
 
         tabelle.innerHTML = "";
+
+        getdata();
 
     }
 
