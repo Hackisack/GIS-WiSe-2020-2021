@@ -133,7 +133,7 @@ namespace Pruefungsabgabe {
         }).then(response => response.text())
         .then(data => {
 
-          checkformresponse.innerHTML = data;
+          checkformresponse.innerText = data;
           clearsite();
           getdata();
 
