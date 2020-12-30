@@ -35,6 +35,7 @@ var Pruefungsabgabe;
     let checkformresponse = document.getElementById("checkformresponse");
     let inputfield1 = document.getElementById("input1");
     let inputfield2 = document.getElementById("input2");
+    let reload = 0; //verhindert mehrfache Events
     let checkboxen = document.getElementsByClassName("checkbox");
     getdata();
     async function getdata() {
@@ -42,10 +43,6 @@ var Pruefungsabgabe;
         let json = await response.text();
         let data = JSON.parse(json);
         buildSite(data);
-        window.removeEventListener("click", function callrefresh() { auswahlrefresh(data); });
-        window.addEventListener("click", function callrefresh() { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
-        savereserve.removeEventListener("click", function callcheck() { checkForm(2, data); });
-        savereserve.addEventListener("click", function callcheck() { checkForm(2, data); });
     }
     function checkForm(_formSize, _data) {
         let formdata = new FormData(form);
@@ -107,12 +104,17 @@ var Pruefungsabgabe;
         }
         showhidedetail(); //Eventlistener auf jeden Knopf, der die Details öffnet + klick auf seite = schließen
         auswahlevent(_data); //Eventlistener auf jeden Knopf, der die Details öffnet
-        reserveevent();
+        onetimeEvent(_data); //verhindert mehrfache Eventlistener
     }
-    function reserveevent() {
-        reservebutton.addEventListener("click", function () { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
-        reserveseitenhide.addEventListener("click", function () { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve)
-            reserveseitenhide.id = "reservehide"; });
+    function onetimeEvent(_data) {
+        if (reload == 0) {
+            window.addEventListener("click", function callrefresh() { auswahlrefresh(_data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
+            savereserve.addEventListener("click", function callcheck() { checkForm(2, _data); });
+            reservebutton.addEventListener("click", function () { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
+            reserveseitenhide.addEventListener("click", function () { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve)
+                reserveseitenhide.id = "reservehide"; });
+            reload++;
+        }
     }
     function auswahlrefresh(_data) {
         let currentprice = 0;

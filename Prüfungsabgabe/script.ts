@@ -67,15 +67,14 @@ namespace Pruefungsabgabe {
     let checkformresponse: HTMLElement = document.getElementById("checkformresponse");
     let inputfield1: HTMLElement = document.getElementById("input1");
     let inputfield2: HTMLElement = document.getElementById("input2");
-
-
+    let reload: number = 0; //verhindert mehrfache Events
     let checkboxen: HTMLCollectionOf<HTMLInputElement> = <HTMLCollectionOf<HTMLInputElement>>document.getElementsByClassName("checkbox");
 
 
 
 
 
-    getdata(); 
+    getdata();
 
 
 
@@ -86,10 +85,8 @@ namespace Pruefungsabgabe {
         let data: Daten = JSON.parse(json);
         buildSite(data);
 
-        window.removeEventListener("click", function callrefresh (): void { auswahlrefresh(data); });
-        window.addEventListener("click", function callrefresh(): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
-        savereserve.removeEventListener("click", function callcheck (): void { checkForm(2, data); });
-        savereserve.addEventListener("click", function callcheck (): void { checkForm(2, data); });
+
+
     }
 
 
@@ -141,18 +138,19 @@ namespace Pruefungsabgabe {
 
     }
 
-//window.location.reload
+    //window.location.reload
     function clearsite(): void {
 
-      
-      
         insertdiv.innerHTML = "";
 
     }
 
+
+
     function buildSite(_data: Daten): void {
 
-       
+
+
 
 
         for (let x: number = 0; x < _data.produkte.length; x++) { //Build all Produkte
@@ -174,7 +172,7 @@ namespace Pruefungsabgabe {
 
         auswahlevent(_data); //Eventlistener auf jeden Knopf, der die Details öffnet
 
-        reserveevent();
+        onetimeEvent(_data); //verhindert mehrfache Eventlistener
 
 
 
@@ -182,11 +180,16 @@ namespace Pruefungsabgabe {
     }
 
 
-    function reserveevent(): void {
+    function onetimeEvent(_data: Daten): void {
 
 
-        reservebutton.addEventListener("click", function (): void { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
-        reserveseitenhide.addEventListener("click", function (): void { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve) reserveseitenhide.id = "reservehide"; });
+        if (reload == 0) {
+            window.addEventListener("click", function callrefresh(): void { auswahlrefresh(_data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
+            savereserve.addEventListener("click", function callcheck(): void { checkForm(2, _data); });
+            reservebutton.addEventListener("click", function (): void { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
+            reserveseitenhide.addEventListener("click", function (): void { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve) reserveseitenhide.id = "reservehide"; });
+            reload++;
+        }
 
 
     }
@@ -247,7 +250,7 @@ namespace Pruefungsabgabe {
 
     interface Daten {
 
-        produkte: [{ _id: string, name: string, produktbild: string, beschreibung: string, preis: number, status: string, ausleihname: string, ausleihemail: string }];
+        produkte: [{ _id: string, name: string, produktbild: string, beschreibung: string, preis: number, status: string }];
 
 
 
