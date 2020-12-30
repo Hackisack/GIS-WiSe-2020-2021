@@ -17,7 +17,7 @@ export namespace Server {
 
     }
 
-
+    
 
     let daten: Mongo.Collection;
 
@@ -76,7 +76,7 @@ export namespace Server {
 
 
 
-
+               
 
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -103,16 +103,16 @@ export namespace Server {
 
                 let daten: Daten = querystring.parse(body);
 
-
-
-
-                let datenobjekt: ReserveObjekt = JSON.parse(JSON.stringify(daten));
-
-                if (datenobjekt._id[0] == "user") {
+                
 
                 
+                let datenobjekt: ReserveObjekt = JSON.parse(JSON.stringify(daten));
+                
+                if (datenobjekt._id[0] == "user") {
+
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
-                    await reserveById(datenobjekt);
+                    _response.write(await reserveById(datenobjekt)); //--> Rückgabe/Antwort
                     _response.end();
 
                 }
@@ -127,15 +127,15 @@ export namespace Server {
 
                 if (datenobjekt._id[0] == "frei") {
 
-
+                    
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setFrei(datenobjekt);
                     _response.end();
 
                 }
+               
 
-
-
+                
 
 
             });
@@ -152,22 +152,22 @@ export namespace Server {
             return alleDatenString;
         }
 
-        async function reserveById(_Daten: ReserveObjekt): Promise<void> {
+        async function reserveById( _Daten: ReserveObjekt): Promise<string> {
+           
+           
+            for ( let x: number = 1; x < _Daten._id.length; x++) {
 
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"status": "reserviert"} }   );
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihname": _Daten.Name} }   ); 
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihemail": _Daten.Email} }   );     
 
-            for (let x: number = 1; x < _Daten._id.length; x++) {
-
-                await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "status": "reserviert" } });
-                await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihname": _Daten.Name } });
-                await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihemail": _Daten.Email } });
-
-
+           
             }
 
+            
+           
 
-
-
-
+            return "Ihre Artikel wurden erfolgreich reserviert.";
         }
 
 
@@ -175,17 +175,17 @@ export namespace Server {
 
             let x: number = 1;
 
-            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "status": "ausgeliehen" } });
-
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"status": "ausgeliehen"} }   );
+        
         }
         async function setFrei(_Daten: ReserveObjekt): Promise<void> {
-
+        
             let x: number = 1;
 
-            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "status": "frei" } });
-            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihname": "" } });
-            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihemail": "" } });
-
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"status": "frei"} }   );
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihname": ""} }   ); 
+            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihemail": ""} }   );
+        
         }
 
 
