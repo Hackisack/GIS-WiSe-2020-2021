@@ -1,43 +1,6 @@
 namespace Pruefungsabgabe {
 
 
-    let headercode: string =
-
-
-        "<div id=\"cart\">" +
-
-        "<h4 id=\"carttext\">Gesamte Leihgebühr: 0€</h4>" +
-
-        "<button id=\"reservieren\"> Zur Reservierung</button>" +
-
-        "</div>" +
-
-
-
-        "<div id=\"reservehide\">" +
-
-        "<h2>Reservieren</h2>" +
-
-        "<form id=\"form\" onsubmit=\"return false\">" +
-
-        "<label for=\"Email\">Email:</label><br>" +
-        "<input id=\"input1\" type=\"text\" name=\"Email\" /><br/>" +
-
-        "<label for=\"Name\">Name:</label><br>" +
-        "<input id=\"input2\" type=\"text\" name=\"Name\" /><br/>" +
-
-
-
-        "<button id=\"savereservieren\">Reservieren</button>" +
-
-        "<p id=\"checkformresponse\" class=\"schließenrev\"></p>" +
-
-        "<p class=\"schließenrev\">(Zum schließen Fenster anklicken)</p>" +
-        "</form>" +
-
-        "</div>";
-
-
 
 
     let produktcode: string =  //--> String in div mit id= insert einfügen
@@ -92,7 +55,6 @@ namespace Pruefungsabgabe {
     let detailseitenhide: HTMLCollection = document.getElementsByClassName("detailhide");
     let auswahlbuttons: HTMLCollection = document.getElementsByClassName("auswahl");
     let insertdiv: HTMLElement = document.getElementById("insert");
-    let inserthead: HTMLElement = document.getElementById("insert");
     let produktbild: HTMLCollection = document.getElementsByClassName("produktbild");
     let information: HTMLCollection = document.getElementsByClassName("information");
     let produktdiv: HTMLCollection = document.getElementsByClassName("produkt");
@@ -181,13 +143,14 @@ namespace Pruefungsabgabe {
 //window.location.reload
     function clearsite(): void {
 
+        
         insertdiv.innerHTML = "";
 
     }
 
     function buildSite(_data: Daten): void {
 
-        inserthead.innerHTML += headercode;
+       
 
 
         for (let x: number = 0; x < _data.produkte.length; x++) { //Build all Produkte

@@ -1,22 +1,6 @@
 "use strict";
 var Pruefungsabgabe;
 (function (Pruefungsabgabe) {
-    let headercode = "<div id=\"cart\">" +
-        "<h4 id=\"carttext\">Gesamte Leihgebühr: 0€</h4>" +
-        "<button id=\"reservieren\"> Zur Reservierung</button>" +
-        "</div>" +
-        "<div id=\"reservehide\">" +
-        "<h2>Reservieren</h2>" +
-        "<form id=\"form\" onsubmit=\"return false\">" +
-        "<label for=\"Email\">Email:</label><br>" +
-        "<input id=\"input1\" type=\"text\" name=\"Email\" /><br/>" +
-        "<label for=\"Name\">Name:</label><br>" +
-        "<input id=\"input2\" type=\"text\" name=\"Name\" /><br/>" +
-        "<button id=\"savereservieren\">Reservieren</button>" +
-        "<p id=\"checkformresponse\" class=\"schließenrev\"></p>" +
-        "<p class=\"schließenrev\">(Zum schließen Fenster anklicken)</p>" +
-        "</form>" +
-        "</div>";
     let produktcode = "<div class=\"produkt\">" +
         "<label  >" +
         "<input type=\"checkbox\" class=\"checkbox\" >" +
@@ -39,7 +23,6 @@ var Pruefungsabgabe;
     let detailseitenhide = document.getElementsByClassName("detailhide");
     let auswahlbuttons = document.getElementsByClassName("auswahl");
     let insertdiv = document.getElementById("insert");
-    let inserthead = document.getElementById("insert");
     let produktbild = document.getElementsByClassName("produktbild");
     let information = document.getElementsByClassName("information");
     let produktdiv = document.getElementsByClassName("produkt");
@@ -110,7 +93,6 @@ var Pruefungsabgabe;
         insertdiv.innerHTML = "";
     }
     function buildSite(_data) {
-        inserthead.innerHTML += headercode;
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
             insertdiv.innerHTML = insertdiv.innerHTML + produktcode;
             produktbild[x].setAttribute("src", _data.produkte[x].produktbild);
