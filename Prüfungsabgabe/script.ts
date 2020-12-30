@@ -129,16 +129,15 @@ namespace Pruefungsabgabe {
             method: "POST",
 
             body: formstring
-        }).then(response => response.text())
-            .then(window.location.reload)       
-            .catch((error) => {
+        }).then(clearsite).then(getdata)
+        .catch((error) => {
                 console.error("Error:", error);
             });
 
 
     }
 
-
+//window.location.reload
     function clearsite(): void {
 
         insertdiv.innerHTML = "";

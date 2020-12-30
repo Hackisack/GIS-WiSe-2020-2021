@@ -83,12 +83,12 @@ var Pruefungsabgabe;
         fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
             body: formstring
-        }).then(response => response.text())
-            .then(window.location.reload)
+        }).then(clearsite).then(getdata)
             .catch((error) => {
             console.error("Error:", error);
         });
     }
+    //window.location.reload
     function clearsite() {
         insertdiv.innerHTML = "";
     }
