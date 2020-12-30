@@ -138,7 +138,7 @@ namespace Pruefungsabgabe {
 
     }
 
-    //window.location.reload
+    
     function clearsite(): void {
 
         insertdiv.innerHTML = "";

@@ -87,7 +87,6 @@ var Pruefungsabgabe;
             console.error("Error:", error);
         });
     }
-    //window.location.reload
     function clearsite() {
         insertdiv.innerHTML = "";
     }
