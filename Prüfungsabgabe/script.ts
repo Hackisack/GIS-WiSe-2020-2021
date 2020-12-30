@@ -62,7 +62,6 @@ namespace Pruefungsabgabe {
     let carttext: HTMLElement = document.getElementById("carttext");
     let reservebutton: HTMLElement = document.getElementById("reservieren");
     let reserveseitenhide: HTMLElement = document.getElementById("reservehide");
-    let reserveseitenshow: HTMLElement = document.getElementById("reserveshow");
     let savereserve: HTMLElement = document.getElementById("savereservieren");
     let form: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
     let checkformresponse: HTMLElement = document.getElementById("checkformresponse");
@@ -143,7 +142,7 @@ namespace Pruefungsabgabe {
     function clearsite(): void {
 
         insertdiv.innerHTML = "";
-        reserveseitenshow.id = "reservehide";
+       
     }
 
 

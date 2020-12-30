@@ -30,7 +30,6 @@ var Pruefungsabgabe;
     let carttext = document.getElementById("carttext");
     let reservebutton = document.getElementById("reservieren");
     let reserveseitenhide = document.getElementById("reservehide");
-    let reserveseitenshow = document.getElementById("reserveshow");
     let savereserve = document.getElementById("savereservieren");
     let form = document.getElementById("form");
     let checkformresponse = document.getElementById("checkformresponse");
@@ -91,7 +90,6 @@ var Pruefungsabgabe;
     //window.location.reload
     function clearsite() {
         insertdiv.innerHTML = "";
-        reserveseitenshow.id = "reservehide";
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
