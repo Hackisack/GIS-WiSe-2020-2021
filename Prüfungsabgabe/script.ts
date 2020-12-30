@@ -72,7 +72,7 @@ namespace Pruefungsabgabe {
 
 
 
-    getdata();  //Data fetchen 
+    getdata(); 
 
 
 
@@ -240,7 +240,7 @@ namespace Pruefungsabgabe {
 
     interface Daten {
 
-        produkte: [{ _id: string, name: string, produktbild: string, beschreibung: string, preis: number, status: string }];
+        produkte: [{ _id: string, name: string, produktbild: string, beschreibung: string, preis: number, status: string, ausleihname: string, ausleihemail: string }];
 
 
 

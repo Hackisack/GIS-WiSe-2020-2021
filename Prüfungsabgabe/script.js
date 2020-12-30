@@ -36,7 +36,7 @@ var Pruefungsabgabe;
     let inputfield1 = document.getElementById("input1");
     let inputfield2 = document.getElementById("input2");
     let checkboxen = document.getElementsByClassName("checkbox");
-    getdata(); //Data fetchen 
+    getdata();
     async function getdata() {
         let response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json = await response.text();
