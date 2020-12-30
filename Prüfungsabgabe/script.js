@@ -30,6 +30,7 @@ var Pruefungsabgabe;
     let carttext = document.getElementById("carttext");
     let reservebutton = document.getElementById("reservieren");
     let reserveseitenhide = document.getElementById("reservehide");
+    let reserveseitenshow = document.getElementById("reserveshow");
     let savereserve = document.getElementById("savereservieren");
     let form = document.getElementById("form");
     let checkformresponse = document.getElementById("checkformresponse");
@@ -82,18 +83,15 @@ var Pruefungsabgabe;
         fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
             body: formstring
-        }).then(response => response.text())
-            .then(data => {
-            checkformresponse.innerText = data;
-            clearsite();
-            getdata();
-        }).catch((error) => {
+        }).then(clearsite).then(getdata)
+            .catch((error) => {
             console.error("Error:", error);
         });
     }
     //window.location.reload
     function clearsite() {
         insertdiv.innerHTML = "";
+        reserveseitenshow.id = "reservehide";
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
@@ -117,7 +115,6 @@ var Pruefungsabgabe;
             reservebutton.addEventListener("click", function () { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
             reserveseitenhide.addEventListener("click", function () { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve)
                 reserveseitenhide.id = "reservehide"; });
-            console.log("ontime");
             reload++;
         }
     }

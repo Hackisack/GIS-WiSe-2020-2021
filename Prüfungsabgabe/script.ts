@@ -62,6 +62,7 @@ namespace Pruefungsabgabe {
     let carttext: HTMLElement = document.getElementById("carttext");
     let reservebutton: HTMLElement = document.getElementById("reservieren");
     let reserveseitenhide: HTMLElement = document.getElementById("reservehide");
+    let reserveseitenshow: HTMLElement = document.getElementById("reserveshow");
     let savereserve: HTMLElement = document.getElementById("savereservieren");
     let form: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
     let checkformresponse: HTMLElement = document.getElementById("checkformresponse");
@@ -130,16 +131,11 @@ namespace Pruefungsabgabe {
             method: "POST",
 
             body: formstring
-        }).then(response => response.text())
-        .then(data => {
+        }).then(clearsite).then(getdata)
+            .catch((error) => {
+                console.error("Error:", error);
+            });
 
-          checkformresponse.innerText = data;
-          clearsite();
-          getdata();
-
-        }).catch((error) => {
-            console.error("Error:", error);
-        });
 
     }
 
@@ -147,7 +143,7 @@ namespace Pruefungsabgabe {
     function clearsite(): void {
 
         insertdiv.innerHTML = "";
-
+        reserveseitenshow.id = "reservehide";
     }
 
 
@@ -193,7 +189,6 @@ namespace Pruefungsabgabe {
             savereserve.addEventListener("click", function callcheck(): void { checkForm(2, _data); });
             reservebutton.addEventListener("click", function (): void { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
             reserveseitenhide.addEventListener("click", function (): void { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve) reserveseitenhide.id = "reservehide"; });
-            console.log("ontime");
             reload++;
         }
 

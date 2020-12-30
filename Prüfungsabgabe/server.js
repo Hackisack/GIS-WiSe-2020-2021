@@ -52,9 +52,8 @@ var Server;
                 let daten = querystring.parse(body);
                 let datenobjekt = JSON.parse(JSON.stringify(daten));
                 if (datenobjekt._id[0] == "user") {
-                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
-                    _response.write(await reserveById(datenobjekt)); //--> Rückgabe/Antwort
+                    await reserveById(datenobjekt);
                     _response.end();
                 }
                 if (datenobjekt._id[0] == "ausgeliehen") {
@@ -80,7 +79,6 @@ var Server;
                 await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihname": _Daten.Name } });
                 await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihemail": _Daten.Email } });
             }
-            return "Ihre Artikel wurden erfolgreich reserviert.";
         }
         async function setAusgeliehen(_Daten) {
             let x = 1;
