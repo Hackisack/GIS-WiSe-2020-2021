@@ -130,7 +130,7 @@ namespace Pruefungsabgabe {
 
             body: formstring
         }).then(clearsite).then(getdata)
-        .catch((error) => {
+            .catch((error) => {
                 console.error("Error:", error);
             });
 
