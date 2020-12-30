@@ -66,7 +66,7 @@ var Pruefungsabgabe;
         formstring.append("_id", _operation);
         formstring.append("_id", _id);
         //Senden und fetchen der Antwort
-        fetch("https://pruefungsabgabe.herokuapp.com/", {
+        await fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
             body: formstring
         });

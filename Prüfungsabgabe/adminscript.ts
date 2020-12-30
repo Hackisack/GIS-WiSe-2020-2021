@@ -108,7 +108,7 @@ namespace Pruefungsabgabe {
 
 
         //Senden und fetchen der Antwort
-        fetch("https://pruefungsabgabe.herokuapp.com/", {
+        await fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
 
             body: formstring
