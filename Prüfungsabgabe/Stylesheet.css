@@ -7,10 +7,7 @@ body,
     background-size: cover;
 }
 
-h1 {
-    color: white;
-}
-
+h1,
 h2 {
     color: white;
 }
@@ -43,13 +40,11 @@ h2 {
     border-radius: 3%;
 }
 
-.produktgrey {
-    float: left;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-top: 3%;
+.produktgrey,
+.containergrey,
+.auswahlgrey,
+.buttonausfreigrau {
     background-color: grey;
-    border-radius: 3%;
 }
 
 .produktbild {
@@ -63,14 +58,6 @@ h2 {
     width: 200px;
     height: 250px;
     background-color: #76b900;
-    border-radius: 3%;
-}
-
-.containergrey {
-    margin: auto;
-    width: 200px;
-    height: 250px;
-    background-color: grey;
     border-radius: 3%;
 }
 
@@ -124,22 +111,6 @@ h2 {
     font-size: 125%;
 }
 
-.auswahlgrey {
-    text-decoration: none;
-    color: white;
-    background-color: grey;
-    font-weight: 500;
-    border-radius: 5px;
-    padding: 10px 40px;
-    border-style: none;
-    margin-top: 20px;
-    font-size: 125%;
-}
-
-.auswahlcheck {
-    margin: auto;
-}
-
 #reservieren {
     text-decoration: none;
     color: white;
@@ -187,14 +158,10 @@ h2 {
     text-align: left;
 }
 
-.detaildiv {
-    color: white;
-    font-size: 125%;
-}
-
+.detaildiv,
 #form {
-    font-size: 125%;
     color: white;
+    font-size: 125%;
 }
 
 .schließen {
@@ -257,18 +224,6 @@ h2 {
     text-decoration: none;
     color: white;
     background-color: #00644D;
-    font-weight: 500;
-    border-radius: 5px;
-    padding: 10px 40px;
-    border-style: none;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.buttonausfreigrau {
-    text-decoration: none;
-    color: white;
-    background-color: grey;
     font-weight: 500;
     border-radius: 5px;
     padding: 10px 40px;

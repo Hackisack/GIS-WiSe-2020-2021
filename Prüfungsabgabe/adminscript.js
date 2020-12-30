@@ -69,13 +69,12 @@ var Pruefungsabgabe;
         fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
             body: formstring
-        }).then(clearsite).then(getdata)
-            .catch((error) => {
-            console.error("Error:", error);
         });
+        clearsite();
+        getdata();
     }
     function clearsite() {
         tabelle.innerHTML = "";
     }
 })(Pruefungsabgabe || (Pruefungsabgabe = {}));
-//# sourceMappingURL=adminskript.js.map
+//# sourceMappingURL=adminscript.js.map
