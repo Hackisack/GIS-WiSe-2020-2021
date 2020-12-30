@@ -84,10 +84,7 @@ var Pruefungsabgabe;
             method: "POST",
             body: formstring
         }).then(response => response.text())
-            .then(data => {
-            checkformresponse.innerText = data;
-            window.location.reload();
-        })
+            .then(window.location.reload)
             .catch((error) => {
             console.error("Error:", error);
         });

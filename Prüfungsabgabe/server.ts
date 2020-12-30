@@ -110,9 +110,9 @@ export namespace Server {
 
                 if (datenobjekt._id[0] == "user") {
 
-                    _response.setHeader("content-type", "text/html; charset=utf-8");
+                
                     _response.setHeader("Access-Control-Allow-Origin", "*");
-                    _response.write(await reserveById(datenobjekt)); //Rückgabe/Antwort
+                    await reserveById(datenobjekt);
                     _response.end();
 
                 }
@@ -152,7 +152,7 @@ export namespace Server {
             return alleDatenString;
         }
 
-        async function reserveById(_Daten: ReserveObjekt): Promise<string> {
+        async function reserveById(_Daten: ReserveObjekt): Promise<void> {
 
 
             for (let x: number = 1; x < _Daten._id.length; x++) {
@@ -167,7 +167,7 @@ export namespace Server {
 
 
 
-            return "Ihre Artikel wurden erfolgreich reserviert.";
+
         }
 
 
