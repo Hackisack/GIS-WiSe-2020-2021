@@ -85,7 +85,7 @@ namespace Pruefungsabgabe {
 
 
         window.addEventListener("click", function (): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
-        savereserve.addEventListener("click", function (): void { checkForm(2, data); });
+        savereserve.addEventListener("click", function (): void { checkForm(2, data); }, {once: true});
     }
 
 

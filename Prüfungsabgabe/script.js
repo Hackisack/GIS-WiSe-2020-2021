@@ -43,7 +43,7 @@ var Pruefungsabgabe;
         let data = JSON.parse(json);
         buildSite(data);
         window.addEventListener("click", function () { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
-        savereserve.addEventListener("click", function () { checkForm(2, data); });
+        savereserve.addEventListener("click", function () { checkForm(2, data); }, { once: true });
     }
     function checkForm(_formSize, _data) {
         let formdata = new FormData(form);
