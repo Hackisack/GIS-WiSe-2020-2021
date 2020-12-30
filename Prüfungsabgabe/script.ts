@@ -130,11 +130,16 @@ namespace Pruefungsabgabe {
             method: "POST",
 
             body: formstring
-        }).then(clearsite).then(getdata)
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+        }).then(response => response.text())
+        .then(data => {
 
+          checkformresponse.innerHTML = data;
+          clearsite();
+          getdata();
+
+        }).catch((error) => {
+            console.error("Error:", error);
+        });
 
     }
 
