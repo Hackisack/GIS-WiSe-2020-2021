@@ -134,9 +134,9 @@ namespace Pruefungsabgabe {
 
 
                 checkformresponse.innerText = data;
+                window.location.reload();
 
-
-            }).then(window.location.reload)
+            }).then()
             .catch((error) => {
                 console.error("Error:", error);
             });

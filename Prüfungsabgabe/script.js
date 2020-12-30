@@ -86,7 +86,8 @@ var Pruefungsabgabe;
         }).then(response => response.text())
             .then(async (data) => {
             checkformresponse.innerText = data;
-        }).then(window.location.reload)
+            window.location.reload();
+        }).then()
             .catch((error) => {
             console.error("Error:", error);
         });
