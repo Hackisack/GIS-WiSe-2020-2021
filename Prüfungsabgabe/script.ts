@@ -86,10 +86,10 @@ namespace Pruefungsabgabe {
         let data: Daten = JSON.parse(json);
         buildSite(data);
 
-        window.removeEventListener("click", function (): void { auswahlrefresh(data); });
+        window.removeEventListener("click", function callrefresh (): void { auswahlrefresh(data); });
         window.addEventListener("click", function callrefresh(): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
-        savereserve.removeEventListener("click", function (): void { checkForm(2, data); });
-        savereserve.addEventListener("click", function (): void { checkForm(2, data); });
+        savereserve.removeEventListener("click", function callcheck (): void { checkForm(2, data); });
+        savereserve.addEventListener("click", function callcheck (): void { checkForm(2, data); });
     }
 
 
