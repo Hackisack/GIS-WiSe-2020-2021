@@ -12,6 +12,10 @@ h2 {
     color: white;
 }
 
+h2 {
+    color: white;
+}
+
 #unter {
     margin-top: 60px;
 }
@@ -40,10 +44,7 @@ h2 {
     border-radius: 3%;
 }
 
-.produktgrey,
-.containergrey,
-.auswahlgrey,
-.buttonausfreigrau {
+.produktgrey {
     background-color: grey;
 }
 
@@ -59,6 +60,10 @@ h2 {
     height: 250px;
     background-color: #76b900;
     border-radius: 3%;
+}
+
+.containergrey {
+    background-color: grey;
 }
 
 .detailbutton {
@@ -109,6 +114,10 @@ h2 {
     border-style: none;
     margin-top: 20px;
     font-size: 125%;
+}
+
+.auswahlgrey {
+    background-color: grey;
 }
 
 #reservieren {
@@ -230,4 +239,8 @@ h2 {
     border-style: none;
     margin-bottom: 5px;
     margin-top: 5px;
+}
+
+.buttonausfreigrau {
+    background-color: grey;
 }
