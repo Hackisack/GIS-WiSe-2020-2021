@@ -84,7 +84,7 @@ namespace Pruefungsabgabe {
         buildSite(data);
 
 
-        window.addEventListener("click", function (): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gbühr und schreibt sie hin
+        window.addEventListener("click", function (): void { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
         savereserve.addEventListener("click", function (): void { checkForm(2, data); });
     }
 
@@ -136,7 +136,7 @@ namespace Pruefungsabgabe {
                 checkformresponse.innerText = data;
 
 
-            }).then(clearsite).then(getdata)
+            }).then(window.location.reload)
             .catch((error) => {
                 console.error("Error:", error);
             });

@@ -42,7 +42,7 @@ var Pruefungsabgabe;
         let json = await response.text();
         let data = JSON.parse(json);
         buildSite(data);
-        window.addEventListener("click", function () { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gbühr und schreibt sie hin
+        window.addEventListener("click", function () { auswahlrefresh(data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
         savereserve.addEventListener("click", function () { checkForm(2, data); });
     }
     function checkForm(_formSize, _data) {
@@ -86,7 +86,7 @@ var Pruefungsabgabe;
         }).then(response => response.text())
             .then(async (data) => {
             checkformresponse.innerText = data;
-        }).then(clearsite).then(getdata)
+        }).then(window.location.reload)
             .catch((error) => {
             console.error("Error:", error);
         });
