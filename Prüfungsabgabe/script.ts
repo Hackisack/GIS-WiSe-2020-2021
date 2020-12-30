@@ -130,13 +130,13 @@ namespace Pruefungsabgabe {
 
             body: formstring
         }).then(response => response.text())
-            .then(async data => {
+            .then(data => {
 
 
                 checkformresponse.innerText = data;
                 window.location.reload();
 
-            }).then()
+            })
             .catch((error) => {
                 console.error("Error:", error);
             });
