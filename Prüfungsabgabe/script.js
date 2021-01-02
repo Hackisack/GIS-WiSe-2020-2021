@@ -88,6 +88,7 @@ var Pruefungsabgabe;
     function clearsite() {
         insertdiv.innerHTML = "";
         getdata();
+        checkformresponse.innerText = "Ihre Artikel wurden für Sie reserviert";
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte

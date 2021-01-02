@@ -32,14 +32,10 @@ var Server;
     }
     function handleRequest(_request, _response) {
         if (_request.method == "GET") {
-            let body = "";
-            _request.on("data", data => {
-                body += data.toString();
-            });
             _request.on("end", async () => {
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 _response.setHeader("Access-Control-Allow-Origin", "*");
-                _response.write(body = await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
+                _response.write(await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
                 _response.end();
             });
         }

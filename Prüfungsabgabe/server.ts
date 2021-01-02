@@ -65,10 +65,8 @@ export namespace Server {
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
 
         if (_request.method == "GET") {
-            let body: string = "";
-            _request.on("data", data => {
-                body += data.toString();
-            });
+           
+           
 
 
 
@@ -80,7 +78,7 @@ export namespace Server {
 
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 _response.setHeader("Access-Control-Allow-Origin", "*");
-                _response.write(body = await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
+                _response.write(await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
                 _response.end();
 
 
