@@ -73,6 +73,7 @@ namespace Pruefungsabgabe {
         let response: Response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json: string = await response.text();
         let data: Daten = JSON.parse(json);
+        console.log("test");
         buildSite(data);
 
 

@@ -41,6 +41,7 @@ var Pruefungsabgabe;
         let response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json = await response.text();
         let data = JSON.parse(json);
+        console.log("test");
         buildSite(data);
     }
     function checkForm(_formSize, _data) {
