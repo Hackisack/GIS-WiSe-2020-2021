@@ -144,6 +144,8 @@ namespace Pruefungsabgabe {
        
         getdata();
 
+        checkformresponse.innerText = "Ihre Artikel wurden für Sie reserviert";
+
     }
 
 

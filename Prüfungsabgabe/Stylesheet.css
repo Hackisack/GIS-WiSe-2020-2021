@@ -243,3 +243,7 @@ h2 {
 .buttonausfreigrau {
     background-color: grey;
 }
+
+#checkformresponse {
+    font-size: 100%;
+}
