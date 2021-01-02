@@ -17,7 +17,7 @@ export namespace Server {
 
     }
 
-    
+
 
     let daten: Mongo.Collection;
 
@@ -65,16 +65,12 @@ export namespace Server {
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
 
         if (_request.method == "GET") {
-           
-           
-
-
 
             _request.on("end", async () => {
 
 
 
-               
+
 
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -93,28 +89,24 @@ export namespace Server {
                 body += data.toString();
             });
 
-
-
             _request.on("end", async () => {
 
 
 
                 let daten: Daten = querystring.parse(body);
 
-                
-
-                
                 let datenobjekt: ReserveObjekt = JSON.parse(JSON.stringify(daten));
-                
-                if (datenobjekt._id[0] == "user") {
+
+
+                if (datenobjekt._id[0] == "user") { //Reservierung
 
                     _response.setHeader("Access-Control-Allow-Origin", "*");
-                    await reserveById(datenobjekt); 
+                    await reserveById(datenobjekt);
                     _response.end();
 
                 }
 
-                if (datenobjekt._id[0] == "ausgeliehen") {
+                if (datenobjekt._id[0] == "ausgeliehen") { //Auf ausgeliehen setzen
 
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setAusgeliehen(datenobjekt);
@@ -122,17 +114,17 @@ export namespace Server {
 
                 }
 
-                if (datenobjekt._id[0] == "frei") {
+                if (datenobjekt._id[0] == "frei") { //auf frei setzen
 
-                    
+
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setFrei(datenobjekt);
                     _response.end();
 
                 }
-               
 
-                
+
+
 
 
             });
@@ -149,20 +141,18 @@ export namespace Server {
             return alleDatenString;
         }
 
-        async function reserveById( _Daten: ReserveObjekt): Promise<void> {
-           
-           
-            for ( let x: number = 1; x < _Daten._id.length; x++) {
 
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"status": "reserviert"} }   );
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihname": _Daten.Name} }   ); 
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihemail": _Daten.Email} }   );     
+        async function reserveById(_Daten: ReserveObjekt): Promise<void> {
 
-           
+
+            for (let x: number = 1; x < _Daten._id.length; x++) {
+
+                await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "status": "reserviert" } });
+                await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihname": _Daten.Name } });
+                await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihemail": _Daten.Email } });
+
+
             }
-
-        
-           
         }
 
 
@@ -170,25 +160,17 @@ export namespace Server {
 
             let x: number = 1;
 
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"status": "ausgeliehen"} }   );
-        
+            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "status": "ausgeliehen" } });
+
         }
         async function setFrei(_Daten: ReserveObjekt): Promise<void> {
-        
+
             let x: number = 1;
 
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"status": "frei"} }   );
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihname": ""} }   ); 
-            await daten.findOneAndUpdate( {_id: new Mongo.ObjectId( _Daten._id[x])} , { $set: {"ausleihemail": ""} }   );
-        
+            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "status": "frei" } });
+            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihname": "" } });
+            await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihemail": "" } });
+
         }
-
-
-
-
-
-
-
-
     }
 }

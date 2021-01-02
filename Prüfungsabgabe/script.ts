@@ -40,16 +40,6 @@ namespace Pruefungsabgabe {
 
 
 
-
-
-
-
-
-
-
-    //Detailseite
-
-
     let detailbuttons: HTMLCollection = document.getElementsByClassName("detailbutton");
     let detailseitenshow: HTMLCollection = document.getElementsByClassName("detailshow");
     let detailseitenhide: HTMLCollection = document.getElementsByClassName("detailhide");
@@ -74,12 +64,12 @@ namespace Pruefungsabgabe {
 
 
 
-    getdata();
+    getData(); 
 
 
 
 
-    async function getdata(): Promise<void> {
+    async function getData(): Promise<void> {
         let response: Response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json: string = await response.text();
         let data: Daten = JSON.parse(json);
@@ -132,17 +122,17 @@ namespace Pruefungsabgabe {
             body: formstring
         });
 
-        clearsite();
-        
+        refreshData();
+
 
     }
 
-    
-    function clearsite(): void {
+
+    function refreshData(): void {
 
         insertdiv.innerHTML = "";
-       
-        getdata();
+
+        getData();
 
         checkformresponse.innerHTML = "Ihre Artikel wurden für Sie reserviert";
 
@@ -170,12 +160,12 @@ namespace Pruefungsabgabe {
 
 
 
-        showhidedetail(); //Eventlistener auf jeden Knopf, der die Details öffnet + klick auf seite = schließen
+        showhideDetail(); //Eventlistener auf jeden Knopf, der die Details öffnet + Details schließen
 
 
-        auswahlevent(_data); //Eventlistener auf jeden Knopf, der die Details öffnet
+        auswahlEvent(_data); //Auswählen auf der Detailseite checked die Checkmark
 
-        onetimeEvent(_data); //verhindert mehrfache Eventlistener
+        onetimeEvent(_data); //verhindert mehrfache Eventlistener nach neuem getdata
 
 
 
@@ -187,7 +177,7 @@ namespace Pruefungsabgabe {
 
 
         if (reload == 0) {
-            window.addEventListener("click", function callrefresh(): void { auswahlrefresh(_data); }); //liest alle gecheckten checkboxen und addiert Gebühr und schreibt sie hin
+            window.addEventListener("click", function callrefresh(): void { auswahlRefresh(_data); }); //liest alle gecheckten checkboxen + addiert Gebühr + schreibt sie hin
             savereserve.addEventListener("click", function callcheck(): void { checkForm(2, _data); });
             reservebutton.addEventListener("click", function (): void { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
             reserveseitenhide.addEventListener("click", function (): void { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve) reserveseitenhide.id = "reservehide"; });
@@ -198,7 +188,7 @@ namespace Pruefungsabgabe {
     }
 
 
-    function auswahlrefresh(_data: Daten): void {
+    function auswahlRefresh(_data: Daten): void {
 
         let currentprice: number = 0;
 
@@ -212,7 +202,7 @@ namespace Pruefungsabgabe {
 
 
 
-    function auswahlevent(_data: Daten): void {
+    function auswahlEvent(_data: Daten): void {
 
         for (let x: number = 0; x < _data.produkte.length; x++) {
 
@@ -227,7 +217,7 @@ namespace Pruefungsabgabe {
 
 
 
-    function showhidedetail(): void {
+    function showhideDetail(): void {
 
         for (let x: number = 0; x < detailbuttons.length; x++) {
 

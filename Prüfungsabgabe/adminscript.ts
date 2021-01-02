@@ -43,10 +43,10 @@ namespace Pruefungsabgabe {
     let buttonfrei: HTMLCollection = document.getElementsByClassName("buttonfrei");
 
 
-    getdata();
+    getData();
 
 
-    async function getdata(): Promise<void> {
+    async function getData(): Promise<void> {
         let response: Response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json: string = await response.text();
         let data: Daten = JSON.parse(json);
@@ -114,17 +114,17 @@ namespace Pruefungsabgabe {
             body: formstring
         });
 
-        clearsite();
-        
+        clearSite();
+
 
 
     }
 
-    function clearsite(): void {
+    function clearSite(): void {
 
         tabelle.innerHTML = "";
 
-        getdata();
+        getData();
 
     }
 

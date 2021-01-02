@@ -22,8 +22,8 @@ var Pruefungsabgabe;
     let email = document.getElementsByClassName("email");
     let buttonausgeliehen = document.getElementsByClassName("buttonausgeliehen");
     let buttonfrei = document.getElementsByClassName("buttonfrei");
-    getdata();
-    async function getdata() {
+    getData();
+    async function getData() {
         let response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json = await response.text();
         let data = JSON.parse(json);
@@ -70,11 +70,11 @@ var Pruefungsabgabe;
             method: "POST",
             body: formstring
         });
-        clearsite();
+        clearSite();
     }
-    function clearsite() {
+    function clearSite() {
         tabelle.innerHTML = "";
-        getdata();
+        getData();
     }
 })(Pruefungsabgabe || (Pruefungsabgabe = {}));
 //# sourceMappingURL=adminscript.js.map

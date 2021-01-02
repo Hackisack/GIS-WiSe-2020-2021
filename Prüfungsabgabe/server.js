@@ -47,17 +47,17 @@ var Server;
             _request.on("end", async () => {
                 let daten = querystring.parse(body);
                 let datenobjekt = JSON.parse(JSON.stringify(daten));
-                if (datenobjekt._id[0] == "user") {
+                if (datenobjekt._id[0] == "user") { //Reservierung
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await reserveById(datenobjekt);
                     _response.end();
                 }
-                if (datenobjekt._id[0] == "ausgeliehen") {
+                if (datenobjekt._id[0] == "ausgeliehen") { //Auf ausgeliehen setzen
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setAusgeliehen(datenobjekt);
                     _response.end();
                 }
-                if (datenobjekt._id[0] == "frei") {
+                if (datenobjekt._id[0] == "frei") { //auf frei setzen
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setFrei(datenobjekt);
                     _response.end();
