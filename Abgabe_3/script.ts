@@ -82,12 +82,8 @@ namespace Abgabe3 {
 
           antwort.innerText = data.slice(0, -2) + ".";
 
-        })
-        .catch((error) => {
-          console.error("Error:", error);
         });
-
-
+        
     }
 
   }

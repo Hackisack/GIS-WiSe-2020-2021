@@ -58,9 +58,6 @@ var Abgabe3;
             }).then(response => response.text())
                 .then(data => {
                 antwort.innerText = data.slice(0, -2) + ".";
-            })
-                .catch((error) => {
-                console.error("Error:", error);
             });
         }
     }

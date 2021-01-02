@@ -69,7 +69,7 @@ var P_3_1Server;
         if (allData.data.length >= 1) {
             for (let x = 0; x < allData.data.length; x++) {
                 if (allData.data[x].Email == datenObjekt.data[0].Email) {
-                    return "Die benutze Email befindet sich bereits in unserer Datenbank. Loggen Sie sich ein oder registrieren sie sich mit einer anderen.";
+                    return "Die benutze Email befindet sich bereits in unserer Datenbank. Loggen Sie sich ein oder registrieren Sie sich mit einer anderen.";
                 }
             }
         }
