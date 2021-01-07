@@ -66,15 +66,16 @@ export namespace Server {
 
         if (_request.method == "GET") {
 
+            let body: string = "";
+            _request.on("data", data => {
+                body += data.toString();
+            });
+
             _request.on("end", async () => {
-
-
-
-
 
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 _response.setHeader("Access-Control-Allow-Origin", "*");
-                _response.write(await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
+                _response.write(body = await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
                 _response.end();
 
 
@@ -100,6 +101,7 @@ export namespace Server {
 
                 if (datenobjekt._id[0] == "user") { //Reservierung
 
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await reserveById(datenobjekt);
                     _response.end();
@@ -108,6 +110,7 @@ export namespace Server {
 
                 if (datenobjekt._id[0] == "ausgeliehen") { //Auf ausgeliehen setzen
 
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setAusgeliehen(datenobjekt);
                     _response.end();
@@ -117,6 +120,7 @@ export namespace Server {
                 if (datenobjekt._id[0] == "frei") { //auf frei setzen
 
 
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setFrei(datenobjekt);
                     _response.end();

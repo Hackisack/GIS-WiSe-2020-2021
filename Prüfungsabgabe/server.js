@@ -32,10 +32,14 @@ var Server;
     }
     function handleRequest(_request, _response) {
         if (_request.method == "GET") {
+            let body = "";
+            _request.on("data", data => {
+                body += data.toString();
+            });
             _request.on("end", async () => {
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 _response.setHeader("Access-Control-Allow-Origin", "*");
-                _response.write(await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
+                _response.write(body = await retrieveAll()); //Rückgabe von kompletter Datenbank zur Seitengenerierung
                 _response.end();
             });
         }
@@ -48,16 +52,19 @@ var Server;
                 let daten = querystring.parse(body);
                 let datenobjekt = JSON.parse(JSON.stringify(daten));
                 if (datenobjekt._id[0] == "user") { //Reservierung
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await reserveById(datenobjekt);
                     _response.end();
                 }
                 if (datenobjekt._id[0] == "ausgeliehen") { //Auf ausgeliehen setzen
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setAusgeliehen(datenobjekt);
                     _response.end();
                 }
                 if (datenobjekt._id[0] == "frei") { //auf frei setzen
+                    _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setFrei(datenobjekt);
                     _response.end();
