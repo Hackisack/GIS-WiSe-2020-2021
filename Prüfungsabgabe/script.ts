@@ -120,6 +120,14 @@ namespace Pruefungsabgabe {
             method: "POST",
 
             body: formstring
+        }).then(response => response.text())
+        .then(data => {
+
+          checkformresponse.innerHTML = data;
+
+        })
+        .catch((error) => {
+          console.error("Error:", error);
         });
 
         refreshData();
@@ -134,7 +142,7 @@ namespace Pruefungsabgabe {
 
         getData();
 
-        checkformresponse.innerHTML = "Ihre Artikel wurden für Sie reserviert";
+        
 
     }
 

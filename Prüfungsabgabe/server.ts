@@ -67,8 +67,10 @@ export namespace Server {
         if (_request.method == "GET") {
 
             let body: string = "";
+            body  = body;
+
             _request.on("data", data => {
-                body += data.toString();
+                body += data;
             });
 
             _request.on("end", async () => {
@@ -103,7 +105,7 @@ export namespace Server {
 
                     _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
-                    await reserveById(datenobjekt);
+                    _response.write(await reserveById(datenobjekt));
                     _response.end();
 
                 }
@@ -146,7 +148,7 @@ export namespace Server {
         }
 
 
-        async function reserveById(_Daten: ReserveObjekt): Promise<void> {
+        async function reserveById(_Daten: ReserveObjekt): Promise<string> {
 
 
             for (let x: number = 1; x < _Daten._id.length; x++) {
@@ -157,6 +159,7 @@ export namespace Server {
 
 
             }
+            return "Ihre Reservierung wurde erfolgreich abgeschlossen";
         }
 
 

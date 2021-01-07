@@ -81,13 +81,18 @@ var Pruefungsabgabe;
         await fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
             body: formstring
+        }).then(response => response.text())
+            .then(data => {
+            checkformresponse.innerHTML = data;
+        })
+            .catch((error) => {
+            console.error("Error:", error);
         });
         refreshData();
     }
     function refreshData() {
         insertdiv.innerHTML = "";
         getData();
-        checkformresponse.innerHTML = "Ihre Artikel wurden für Sie reserviert";
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
