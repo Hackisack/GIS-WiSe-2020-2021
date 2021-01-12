@@ -33,16 +33,12 @@ var Abgabe3;
             let formdata = new FormData(form);
             let formstring = new URLSearchParams(formdata);
             //Senden und fetchen der Antwort
-            fetch("https://giswise2020.herokuapp.com/", {
+            let response = await fetch("https://giswise2020.herokuapp.com/", {
                 method: "POST",
                 body: formstring
-            }).then(response => response.text())
-                .then(data => {
-                antwort.innerText = data;
-            })
-                .catch((error) => {
-                console.error("Error:", error);
             });
+            let data = await response.text();
+            antwort.innerText = data;
         }
     }
     //Alle User abfragen
@@ -53,12 +49,11 @@ var Abgabe3;
         async function send() {
             antwort.innerText = "";
             //Senden und fetchen der Antwort
-            fetch("https://giswise2020.herokuapp.com/", {
+            let response = await fetch("https://giswise2020.herokuapp.com/", {
                 method: "POST"
-            }).then(response => response.text())
-                .then(data => {
-                antwort.innerText = data.slice(0, -2) + ".";
             });
+            let data = await response.text();
+            antwort.innerText = data.slice(0, -2) + ".";
         }
     }
 })(Abgabe3 || (Abgabe3 = {}));

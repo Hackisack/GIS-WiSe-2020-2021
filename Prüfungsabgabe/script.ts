@@ -116,19 +116,16 @@ namespace Pruefungsabgabe {
 
 
         //Senden und fetchen der Antwort
-        await fetch("https://pruefungsabgabe.herokuapp.com/", {
+        let response: Response =  await fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
 
             body: formstring
-        }).then(response => response.text())
-        .then(data => {
-
-          checkformresponse.innerHTML = data;
-
-        })
-        .catch((error) => {
-          console.error("Error:", error);
         });
+
+        let data: string = await response.text();
+
+        checkformresponse.innerHTML = data;
+
 
         refreshData();
 

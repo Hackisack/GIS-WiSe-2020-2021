@@ -40,20 +40,19 @@ namespace Abgabe3 {
 
 
       //Senden und fetchen der Antwort
-      fetch("https://giswise2020.herokuapp.com/", {
+      
+      let response: Response = await fetch("https://giswise2020.herokuapp.com/", {
         method: "POST",
 
         body: formstring
-      }).then(response => response.text())
-        .then(data => {
+      });
 
-          antwort.innerText = data;
+      let data: string = await response.text();
 
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+      antwort.innerText = data;
 
+      
+    
 
     }
 
@@ -73,16 +72,15 @@ namespace Abgabe3 {
 
       antwort.innerText = "";
       //Senden und fetchen der Antwort
-      fetch("https://giswise2020.herokuapp.com/", {
+
+      let response: Response = await fetch("https://giswise2020.herokuapp.com/", {
         method: "POST"
 
+      });
 
-      }).then(response => response.text())
-        .then(data => {
+      let data: string = await response.text();
 
-          antwort.innerText = data.slice(0, -2) + ".";
-
-        });
+      antwort.innerText = data.slice(0, -2) + ".";
         
     }
 
