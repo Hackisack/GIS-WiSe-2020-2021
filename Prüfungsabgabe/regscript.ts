@@ -78,7 +78,7 @@ namespace Pruefungsabgabe {
     function refreshData(): void {
 
         sessionStorage.clear();
-        window.open("/Prüfungsabgabe/AStA_Verleih.html", "_self");
+        window.open("/GIS-WiSe-2020-2021/Prüfungsabgabe/AStA_Verleih.html", "_self");
 
 
 

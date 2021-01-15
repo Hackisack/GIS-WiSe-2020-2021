@@ -106,7 +106,7 @@ namespace Pruefungsabgabe {
             sessionStorage.setItem("data", formstring.toString());
 
 
-            window.open("/Prüfungsabgabe/AStA_Reg.html", "_self");
+            window.open("/GIS-WiSe-2020-2021/Prüfungsabgabe/AStA_Reg.html", "_self");
         }
     }
 
