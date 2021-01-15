@@ -165,9 +165,11 @@ namespace Pruefungsabgabe {
 
         for (let x: number = 0; x < checkboxen.length; x++) {
 
+            if (currentprice != 0) {checkformresponse.innerText = ""; }
             if (checkboxen[x].checked && _data.produkte[x].status == "frei") { currentprice += _data.produkte[x].preis; carttext.innerHTML = "Gesamte Leihgebühr: " + currentprice.toString() + "€"; }
             else { carttext.innerHTML = "Gesamte Leihgebühr: " + currentprice.toString() + "€"; }
-        }
+           
+        } 
 
     }
 
