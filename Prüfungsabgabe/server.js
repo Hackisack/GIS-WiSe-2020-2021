@@ -83,7 +83,7 @@ var Server;
                 await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihname": _Daten.Name } });
                 await daten.findOneAndUpdate({ _id: new Mongo.ObjectId(_Daten._id[x]) }, { $set: { "ausleihemail": _Daten.Email } });
             }
-            return "Ihre Reservierung wurde erfolgreich abgeschlossen";
+            return "Erfolg";
         }
         async function setAusgeliehen(_Daten) {
             let x = 1;

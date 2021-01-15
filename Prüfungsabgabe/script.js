@@ -28,12 +28,7 @@ var Pruefungsabgabe;
     let containerdiv = document.getElementsByClassName("container");
     let carttext = document.getElementById("carttext");
     let reservebutton = document.getElementById("reservieren");
-    let reserveseitenhide = document.getElementById("reservehide");
-    let savereserve = document.getElementById("savereservieren");
-    let form = document.getElementById("form");
     let checkformresponse = document.getElementById("checkformresponse");
-    let inputfield1 = document.getElementById("input1");
-    let inputfield2 = document.getElementById("input2");
     let reload = 0; //verhindert mehrfache Events
     let checkboxen = document.getElementsByClassName("checkbox");
     getData();
@@ -43,52 +38,27 @@ var Pruefungsabgabe;
         let data = JSON.parse(json);
         buildSite(data);
     }
-    function checkForm(_formSize, _data) {
-        let formdata = new FormData(form);
-        let formstring = new URLSearchParams(formdata);
-        let formfilled = 0;
+    async function save(_data) {
         let cartfilled = 0;
-        for (let entry of formstring.values()) {
-            if (entry != "") {
-                formfilled++;
-            }
-        }
         for (let x = 0; x < checkboxen.length; x++) {
             if (checkboxen[x].checked) {
                 cartfilled++;
             }
         }
-        if (formfilled < _formSize) {
-            checkformresponse.innerText = "Bitte füllen Sie das Formular vollständig aus";
-        } //Form ausgefüllt?
-        else if (cartfilled == 0) {
+        if (cartfilled == 0) {
             checkformresponse.innerText = "Es befinden sich keine Artikel in Ihrer Auswahl";
         } //Etwas ausgewählt?
+        //Daten in SessionStorage
         else {
-            send(_data);
-        }
-    }
-    async function send(_data) {
-        let formdata = new FormData(form);
-        let formstring = new URLSearchParams(formdata);
-        formstring.append("_id", "user");
-        for (let x = 0; x < checkboxen.length; x++) {
-            if (checkboxen[x].checked) {
-                formstring.append("_id", _data.produkte[x]._id);
+            let formstring = new URLSearchParams();
+            for (let x = 0; x < checkboxen.length; x++) {
+                if (checkboxen[x].checked) {
+                    formstring.append("_id", _data.produkte[x]._id);
+                }
             }
+            sessionStorage.setItem("data", formstring.toString());
+            window.open("/Prüfungsabgabe/AStA_Reg.html", "_self");
         }
-        //Senden und fetchen der Antwort
-        let response = await fetch("https://pruefungsabgabe.herokuapp.com/", {
-            method: "POST",
-            body: formstring
-        });
-        let data = await response.text();
-        checkformresponse.innerHTML = data;
-        refreshData();
-    }
-    function refreshData() {
-        insertdiv.innerHTML = "";
-        getData();
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
@@ -108,10 +78,7 @@ var Pruefungsabgabe;
     function onetimeEvent(_data) {
         if (reload == 0) {
             window.addEventListener("click", function callrefresh() { auswahlRefresh(_data); }); //liest alle gecheckten checkboxen + addiert Gebühr + schreibt sie hin
-            savereserve.addEventListener("click", function callcheck() { checkForm(2, _data); });
-            reservebutton.addEventListener("click", function () { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
-            reserveseitenhide.addEventListener("click", function () { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve)
-                reserveseitenhide.id = "reservehide"; });
+            reservebutton.addEventListener("click", function () { save(_data); });
             reload++;
         }
     }

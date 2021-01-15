@@ -159,7 +159,7 @@ export namespace Server {
 
 
             }
-            return "Ihre Reservierung wurde erfolgreich abgeschlossen";
+            return "Erfolg";
         }
 
 

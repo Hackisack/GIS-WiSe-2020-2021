@@ -51,12 +51,9 @@ namespace Pruefungsabgabe {
     let containerdiv: HTMLCollection = document.getElementsByClassName("container");
     let carttext: HTMLElement = document.getElementById("carttext");
     let reservebutton: HTMLElement = document.getElementById("reservieren");
-    let reserveseitenhide: HTMLElement = document.getElementById("reservehide");
-    let savereserve: HTMLElement = document.getElementById("savereservieren");
-    let form: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
     let checkformresponse: HTMLElement = document.getElementById("checkformresponse");
-    let inputfield1: HTMLElement = document.getElementById("input1");
-    let inputfield2: HTMLElement = document.getElementById("input2");
+
+
     let reload: number = 0; //verhindert mehrfache Events
     let checkboxen: HTMLCollectionOf<HTMLInputElement> = <HTMLCollectionOf<HTMLInputElement>>document.getElementsByClassName("checkbox");
 
@@ -64,7 +61,7 @@ namespace Pruefungsabgabe {
 
 
 
-    getData(); 
+    getData();
 
 
 
@@ -81,66 +78,36 @@ namespace Pruefungsabgabe {
 
 
 
-    function checkForm(_formSize: number, _data: Daten): void {
-        let formdata: FormData = new FormData(form);
-        let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
-        let formfilled: number = 0;
+
+
+
+
+    async function save(_data: Daten): Promise<void> {
+
         let cartfilled: number = 0;
 
-
-        for (let entry of formstring.values()) {
-            if (entry != "") { formfilled++; }
-        }
         for (let x: number = 0; x < checkboxen.length; x++) {
 
             if (checkboxen[x].checked) { cartfilled++; }
         }
+        if (cartfilled == 0) { checkformresponse.innerText = "Es befinden sich keine Artikel in Ihrer Auswahl"; } //Etwas ausgewählt?
+
+        //Daten in SessionStorage
+        else {
+
+            let formstring: URLSearchParams = new URLSearchParams();
+            
+
+            for (let x: number = 0; x < checkboxen.length; x++) {
+
+                if (checkboxen[x].checked) { formstring.append("_id", _data.produkte[x]._id); }
+            }
+
+            sessionStorage.setItem("data", formstring.toString());
 
 
-        if (formfilled < _formSize) { checkformresponse.innerText = "Bitte füllen Sie das Formular vollständig aus"; } //Form ausgefüllt?
-        else if (cartfilled == 0) { checkformresponse.innerText = "Es befinden sich keine Artikel in Ihrer Auswahl"; } //Etwas ausgewählt?
-        else { send(_data); }
-    }
-
-
-    async function send(_data: Daten): Promise<void> {
-
-        let formdata: FormData = new FormData(form);
-        let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
-        formstring.append("_id", "user");
-
-        for (let x: number = 0; x < checkboxen.length; x++) {
-
-            if (checkboxen[x].checked) { formstring.append("_id", _data.produkte[x]._id); }
+            window.open("/Prüfungsabgabe/AStA_Reg.html", "_self");
         }
-
-
-        //Senden und fetchen der Antwort
-        let response: Response =  await fetch("https://pruefungsabgabe.herokuapp.com/", {
-            method: "POST",
-
-            body: formstring
-        });
-
-        let data: string = await response.text();
-
-        checkformresponse.innerHTML = data;
-
-
-        refreshData();
-
-
-    }
-
-
-    function refreshData(): void {
-
-        insertdiv.innerHTML = "";
-
-        getData();
-
-        
-
     }
 
 
@@ -183,9 +150,8 @@ namespace Pruefungsabgabe {
 
         if (reload == 0) {
             window.addEventListener("click", function callrefresh(): void { auswahlRefresh(_data); }); //liest alle gecheckten checkboxen + addiert Gebühr + schreibt sie hin
-            savereserve.addEventListener("click", function callcheck(): void { checkForm(2, _data); });
-            reservebutton.addEventListener("click", function (): void { reserveseitenhide.id = "reserveshow"; checkformresponse.innerText = ""; });
-            reserveseitenhide.addEventListener("click", function (): void { if (event.target != form && event.target != inputfield1 && event.target != inputfield2 && event.target != savereserve) reserveseitenhide.id = "reservehide"; });
+
+            reservebutton.addEventListener("click", function (): void { save(_data); });
             reload++;
         }
 
