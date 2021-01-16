@@ -8,15 +8,22 @@ var Pruefungsabgabe;
     savereserve.addEventListener("click", function callcheck() { checkForm(2, formstring); });
     function checkForm(_formSize, _formstring) {
         let formfilled = 0;
+        let checkmail = 0;
         let formvalues = new FormData(form);
         for (let entry of formvalues.values()) {
             if (entry != "") {
                 formfilled++;
             }
+            if (entry.toString().includes("@")) {
+                checkmail++;
+            }
         }
         if (formfilled < _formSize) {
             checkformresponse.innerText = "Bitte füllen Sie das Formular vollständig aus";
         } //Form ausgefüllt?
+        else if (checkmail != 1) {
+            checkformresponse.innerText = "Bitte verwenden Sie eine echte Email";
+        }
         else {
             send(_formstring);
         }

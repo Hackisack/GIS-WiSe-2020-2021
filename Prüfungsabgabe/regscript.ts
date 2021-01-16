@@ -20,6 +20,7 @@ namespace Pruefungsabgabe {
     function checkForm(_formSize: number, _formstring: URLSearchParams): void {
 
         let formfilled: number = 0;
+        let checkmail: number = 0;
 
         let formvalues: FormData = new FormData(form);
 
@@ -27,12 +28,13 @@ namespace Pruefungsabgabe {
 
         for (let entry of formvalues.values()) {
             if (entry != "") { formfilled++; }
+            if (entry.toString().includes("@")) { checkmail++; }
         }
 
 
 
         if (formfilled < _formSize) { checkformresponse.innerText = "Bitte füllen Sie das Formular vollständig aus"; } //Form ausgefüllt?
-
+        else if (checkmail != 1) { checkformresponse.innerText = "Bitte verwenden Sie eine echte Email"; }
         else { send(_formstring); }
 
 
