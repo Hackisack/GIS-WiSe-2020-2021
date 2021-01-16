@@ -43,6 +43,8 @@ var Pruefungsabgabe;
             if (data == "Erfolg") {
                 refreshData();
             }
+            else
+                (checkformresponse.innerText = "Da hat etwas nicht funktioniert. Bitte erneut versuchen");
         }
     }
     function refreshData() {

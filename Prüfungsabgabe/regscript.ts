@@ -67,6 +67,7 @@ namespace Pruefungsabgabe {
                 refreshData();
 
             }
+            else (checkformresponse.innerText = "Da hat etwas nicht funktioniert. Bitte erneut versuchen");
 
 
 
