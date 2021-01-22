@@ -3,51 +3,47 @@
 namespace Pruefungsabgabe {
 
 
-    let checkformresponse: HTMLElement = document.getElementById("checkformresponse");
-    let savereserve: HTMLElement = document.getElementById("savereservieren");
+    let checkFormResponse: HTMLElement = document.getElementById("checkformresponse");
+    let saveReserve: HTMLElement = document.getElementById("savereservieren");
     let form: HTMLFormElement = <HTMLFormElement>document.getElementById("form");
 
-    let formstring: URLSearchParams = new URLSearchParams(sessionStorage.getItem("data"));
+    let formString: URLSearchParams = new URLSearchParams(sessionStorage.getItem("data"));
 
-    savereserve.addEventListener("click", function callcheck(): void { checkForm(2, formstring); });
-
-
+    saveReserve.addEventListener("click", function (): void { checkForm(2, formString); });
 
 
 
+    function checkForm(_formSize: number, _formString: URLSearchParams): void {
 
+        let formFilled: number = 0;
+        let checkMail: number = 0;
 
-    function checkForm(_formSize: number, _formstring: URLSearchParams): void {
-
-        let formfilled: number = 0;
-        let checkmail: number = 0;
-
-        let formvalues: FormData = new FormData(form);
+        let formValues: FormData = new FormData(form);
 
 
 
-        for (let entry of formvalues.values()) {
-            if (entry != "") { formfilled++; }
-            if (entry.toString().includes("@")) { checkmail++; }
+        for (let entry of formValues.values()) {
+            if (entry != "") { formFilled++; } //Alle felder ausgefüllt?
+            if (entry.toString().includes("@")) { checkMail++; } //Email auf @ überprüfen
         }
 
 
 
-        if (formfilled < _formSize) { checkformresponse.innerText = "Bitte füllen Sie das Formular vollständig aus"; } //Form ausgefüllt?
-        else if (checkmail != 1) { checkformresponse.innerText = "Bitte verwenden Sie eine echte Email"; }
-        else { send(_formstring); }
+        if (formFilled < _formSize) { checkFormResponse.innerText = "Bitte füllen Sie das Formular vollständig aus"; }
+        else if (checkMail != 1) { checkFormResponse.innerText = "Bitte verwenden Sie eine echte Email"; }
+        else { send(_formString); }
 
 
 
         async function send(_data: URLSearchParams): Promise<void> {
 
-            let formdata: FormData = new FormData(form);
-            let formstring: URLSearchParams = new URLSearchParams(<URLSearchParams>formdata);
-            formstring.append("_id", "user");
+            let formData: FormData = new FormData(form);
+            let formString: URLSearchParams = new URLSearchParams(<URLSearchParams>formData);
+            formString.append("_id", "user");
 
             for (let entry of _data.values()) {
 
-                formstring.append("_id", entry);
+                formString.append("_id", entry);
             }
 
 
@@ -56,7 +52,7 @@ namespace Pruefungsabgabe {
             let response: Response = await fetch("https://pruefungsabgabe.herokuapp.com/", {
                 method: "POST",
 
-                body: formstring
+                body: formString
             });
 
             let data: string = await response.text();
@@ -67,7 +63,7 @@ namespace Pruefungsabgabe {
                 refreshData();
 
             }
-            else (checkformresponse.innerText = "Da hat etwas nicht funktioniert. Bitte erneut versuchen");
+            else (checkFormResponse.innerText = "Da hat etwas nicht funktioniert. Bitte erneut versuchen");
 
 
 

@@ -1,7 +1,7 @@
 "use strict";
 var Pruefungsabgabe;
 (function (Pruefungsabgabe) {
-    let produktcode = "<div class=\"produkt\">" +
+    let produktCode = "<div class=\"produkt\">" +
         "<label  >" +
         "<input type=\"checkbox\" class=\"checkbox\" >" +
         "</label>" +
@@ -17,18 +17,18 @@ var Pruefungsabgabe;
         "</div>" +
         "<p class=\"schließen\">(Zum schließen Fenster anklicken)</p>" +
         "</div>";
-    let detailbuttons = document.getElementsByClassName("detailbutton");
-    let detailseitenshow = document.getElementsByClassName("detailshow");
-    let detailseitenhide = document.getElementsByClassName("detailhide");
-    let auswahlbuttons = document.getElementsByClassName("auswahl");
-    let insertdiv = document.getElementById("insert");
-    let produktbild = document.getElementsByClassName("produktbild");
+    let detailButtons = document.getElementsByClassName("detailbutton");
+    let detailSeitenShow = document.getElementsByClassName("detailshow");
+    let detailSeitenHide = document.getElementsByClassName("detailhide");
+    let auswahlButtons = document.getElementsByClassName("auswahl");
+    let insertDiv = document.getElementById("insert");
+    let produktBild = document.getElementsByClassName("produktbild");
     let information = document.getElementsByClassName("information");
-    let produktdiv = document.getElementsByClassName("produkt");
-    let containerdiv = document.getElementsByClassName("container");
-    let carttext = document.getElementById("carttext");
-    let reservebutton = document.getElementById("reservieren");
-    let checkformresponse = document.getElementById("checkformresponse");
+    let produktDiv = document.getElementsByClassName("produkt");
+    let containerDiv = document.getElementsByClassName("container");
+    let cartText = document.getElementById("carttext");
+    let reserveButton = document.getElementById("reservieren");
+    let checkFormResponse = document.getElementById("checkformresponse");
     let reload = 0; //verhindert mehrfache Events
     let checkboxen = document.getElementsByClassName("checkbox");
     getData();
@@ -39,35 +39,35 @@ var Pruefungsabgabe;
         buildSite(data);
     }
     async function save(_data) {
-        let cartfilled = 0;
+        let cartFilled = 0;
         for (let x = 0; x < checkboxen.length; x++) {
             if (checkboxen[x].checked) {
-                cartfilled++;
+                cartFilled++;
             }
         }
-        if (cartfilled == 0) {
-            checkformresponse.innerText = "Es befinden sich keine Artikel in Ihrer Auswahl";
+        if (cartFilled == 0) {
+            checkFormResponse.innerText = "Es befinden sich keine Artikel in Ihrer Auswahl";
         } //Etwas ausgewählt?
         //Daten in SessionStorage
         else {
-            let formstring = new URLSearchParams();
+            let formString = new URLSearchParams();
             for (let x = 0; x < checkboxen.length; x++) {
                 if (checkboxen[x].checked) {
-                    formstring.append("_id", _data.produkte[x]._id);
+                    formString.append("_id", _data.produkte[x]._id);
                 }
             }
-            sessionStorage.setItem("data", formstring.toString());
+            sessionStorage.setItem("data", formString.toString());
             window.open("/GIS-WiSe-2020-2021/Prüfungsabgabe/AStA_Reg.html", "_self");
         }
     }
     function buildSite(_data) {
         for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
-            insertdiv.innerHTML = insertdiv.innerHTML + produktcode;
-            produktbild[x].setAttribute("src", _data.produkte[x].produktbild);
+            insertDiv.innerHTML = insertDiv.innerHTML + produktCode;
+            produktBild[x].setAttribute("src", _data.produkte[x].produktbild);
             information[x].innerHTML = "Name: " + _data.produkte[x].name + "<br>" + "<br>" + "Beschreibung: " + _data.produkte[x].beschreibung + "<br>" + "<br>" + "Ausleihgebühr: " + _data.produkte[x].preis + "€" + "<br>" + "<br>";
             if (_data.produkte[x].status != "frei") {
-                produktdiv[x].className = "produkt produktgrey";
-                containerdiv[x].className = "container containergrey";
+                produktDiv[x].className = "produkt produktgrey";
+                containerDiv[x].className = "container containergrey";
                 checkboxen[x].toggleAttribute("disabled");
             }
         }
@@ -77,45 +77,45 @@ var Pruefungsabgabe;
     }
     function onetimeEvent(_data) {
         if (reload == 0) {
-            window.addEventListener("click", function callrefresh() { auswahlRefresh(_data); }); //liest alle gecheckten checkboxen + addiert Gebühr + schreibt sie hin
-            reservebutton.addEventListener("click", function () { save(_data); });
+            window.addEventListener("click", function () { auswahlRefresh(_data); }); //liest alle gecheckten checkboxen + addiert Gebühr + schreibt sie hin
+            reserveButton.addEventListener("click", function () { save(_data); });
             reload++;
         }
     }
     function auswahlRefresh(_data) {
-        let currentprice = 0;
+        let currentPrice = 0;
         for (let x = 0; x < checkboxen.length; x++) {
-            if (currentprice != 0) {
-                checkformresponse.innerText = "";
+            if (currentPrice != 0) {
+                checkFormResponse.innerText = "";
             }
             if (checkboxen[x].checked && _data.produkte[x].status == "frei") {
-                currentprice += _data.produkte[x].preis;
-                carttext.innerHTML = "Gesamte Leihgebühr: " + currentprice.toString() + "€";
+                currentPrice += _data.produkte[x].preis;
+                cartText.innerHTML = "Gesamte Leihgebühr: " + currentPrice.toString() + "€";
             }
             else {
-                carttext.innerHTML = "Gesamte Leihgebühr: " + currentprice.toString() + "€";
+                cartText.innerHTML = "Gesamte Leihgebühr: " + currentPrice.toString() + "€";
             }
         }
     }
     function auswahlEvent(_data) {
         for (let x = 0; x < _data.produkte.length; x++) {
             if (_data.produkte[x].status == "frei") {
-                auswahlbuttons[x].addEventListener("click", function () { checkboxen[x].checked = true; });
+                auswahlButtons[x].addEventListener("click", function () { checkboxen[x].checked = true; });
             }
             else {
-                auswahlbuttons[x].className = "auswahl auswahlgrey";
-                auswahlbuttons[x].toggleAttribute("disabled");
+                auswahlButtons[x].className = "auswahl auswahlgrey";
+                auswahlButtons[x].toggleAttribute("disabled");
             }
         }
     }
     function showhideDetail() {
-        for (let x = 0; x < detailbuttons.length; x++) {
-            detailbuttons[x].addEventListener("click", function () { if (detailseitenshow.length < 1) {
-                detailseitenhide[x].classList.replace("detailhide", "detailshow");
+        for (let x = 0; x < detailButtons.length; x++) {
+            detailButtons[x].addEventListener("click", function () { if (detailSeitenShow.length < 1) {
+                detailSeitenHide[x].classList.replace("detailhide", "detailshow");
             } });
         }
-        for (let x = 0; x < detailseitenhide.length; x++) {
-            detailseitenhide[x].addEventListener("click", function () { detailseitenshow[0].classList.replace("detailshow", "detailhide"); });
+        for (let x = 0; x < detailSeitenHide.length; x++) {
+            detailSeitenHide[x].addEventListener("click", function () { detailSeitenShow[0].classList.replace("detailshow", "detailhide"); });
         }
     }
 })(Pruefungsabgabe || (Pruefungsabgabe = {}));

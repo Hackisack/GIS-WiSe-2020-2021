@@ -67,7 +67,7 @@ export namespace Server {
         if (_request.method == "GET") {
 
             let body: string = "";
-            body  = body;
+            body = body;
 
             _request.on("data", data => {
                 body += data;
@@ -119,7 +119,7 @@ export namespace Server {
 
                 }
 
-                if (datenobjekt._id[0] == "frei") { //auf frei setzen
+                if (datenobjekt._id[0] == "frei") { //Auf frei setzen
 
 
                     _response.setHeader("content-type", "text/html; charset=utf-8");

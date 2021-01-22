@@ -2,7 +2,7 @@
 
 namespace Pruefungsabgabe {
 
-    let tabellenheader: string =
+    let tabellenHeader: string =
 
 
         "<tr>" +
@@ -17,7 +17,7 @@ namespace Pruefungsabgabe {
 
 
 
-    let tabellencode: string =
+    let tabellenCode: string =
 
         "<tr>" +
 
@@ -39,28 +39,30 @@ namespace Pruefungsabgabe {
     let status: HTMLCollection = document.getElementsByClassName("status");
     let name: HTMLCollection = document.getElementsByClassName("name");
     let email: HTMLCollection = document.getElementsByClassName("email");
-    let buttonausgeliehen: HTMLCollection = document.getElementsByClassName("buttonausgeliehen");
-    let buttonfrei: HTMLCollection = document.getElementsByClassName("buttonfrei");
+    let buttonAusgeliehen: HTMLCollection = document.getElementsByClassName("buttonausgeliehen");
+    let buttonFrei: HTMLCollection = document.getElementsByClassName("buttonfrei");
 
 
     getData();
 
 
     async function getData(): Promise<void> {
+
         let response: Response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json: string = await response.text();
         let data: Daten = JSON.parse(json);
         buildSite(data);
+
     }
 
 
     function buildSite(_data: Daten): void {
 
-        tabelle.innerHTML = tabellenheader;
+        tabelle.innerHTML = tabellenHeader;
 
-        for (let x: number = 0; x < _data.produkte.length; x++) { //Build alle Tabelleneinträge
+        for (let x: number = 0; x < _data.produkte.length; x++) { //Baue alle Tabelleneinträge
 
-            tabelle.innerHTML = tabelle.innerHTML + tabellencode;
+            tabelle.innerHTML = tabelle.innerHTML + tabellenCode;
 
 
 
@@ -77,13 +79,14 @@ namespace Pruefungsabgabe {
 
 
         for (let x: number = 0; x < _data.produkte.length; x++) {
-            buttonausgeliehen[x].addEventListener("click", function (): void { send(_data.produkte[x]._id, "ausgeliehen"); });
-            buttonfrei[x].addEventListener("click", function (): void { send(_data.produkte[x]._id, "frei"); });
+
+            buttonAusgeliehen[x].addEventListener("click", function (): void { send(_data.produkte[x]._id, "ausgeliehen"); });
+            buttonFrei[x].addEventListener("click", function (): void { send(_data.produkte[x]._id, "frei"); });
 
             if (_data.produkte[x].status == "frei") {
 
-                buttonfrei[x].className = "buttonfrei buttonausfreigrau"; buttonfrei[x].toggleAttribute("disabled");
-                buttonausgeliehen[x].className = "buttonausgeliehen buttonausfreigrau"; buttonausgeliehen[x].toggleAttribute("disabled");
+                buttonFrei[x].className = "buttonfrei buttongrau"; buttonFrei[x].toggleAttribute("disabled");
+                buttonAusgeliehen[x].className = "buttonausgeliehen buttongrau"; buttonAusgeliehen[x].toggleAttribute("disabled");
 
             }
         }
@@ -95,12 +98,12 @@ namespace Pruefungsabgabe {
     async function send(_id: string, _operation: string): Promise<void> {
 
 
-        let formstring: URLSearchParams = new URLSearchParams();
+        let formString: URLSearchParams = new URLSearchParams();
 
-        formstring.append("Email", "asta.furtwangen");
-        formstring.append("Name", "Asta");
-        formstring.append("_id", _operation);
-        formstring.append("_id", _id);
+        formString.append("Email", "asta.furtwangen");
+        formString.append("Name", "Asta");
+        formString.append("_id", _operation);
+        formString.append("_id", _id);
 
 
 
@@ -109,9 +112,10 @@ namespace Pruefungsabgabe {
 
         //Senden und fetchen der Antwort
         await fetch("https://pruefungsabgabe.herokuapp.com/", {
+
             method: "POST",
 
-            body: formstring
+            body: formString
         });
 
         clearSite();

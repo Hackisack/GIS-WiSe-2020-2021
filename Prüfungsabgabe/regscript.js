@@ -1,50 +1,50 @@
 "use strict";
 var Pruefungsabgabe;
 (function (Pruefungsabgabe) {
-    let checkformresponse = document.getElementById("checkformresponse");
-    let savereserve = document.getElementById("savereservieren");
+    let checkFormResponse = document.getElementById("checkformresponse");
+    let saveReserve = document.getElementById("savereservieren");
     let form = document.getElementById("form");
-    let formstring = new URLSearchParams(sessionStorage.getItem("data"));
-    savereserve.addEventListener("click", function callcheck() { checkForm(2, formstring); });
-    function checkForm(_formSize, _formstring) {
-        let formfilled = 0;
-        let checkmail = 0;
-        let formvalues = new FormData(form);
-        for (let entry of formvalues.values()) {
+    let formString = new URLSearchParams(sessionStorage.getItem("data"));
+    saveReserve.addEventListener("click", function () { checkForm(2, formString); });
+    function checkForm(_formSize, _formString) {
+        let formFilled = 0;
+        let checkMail = 0;
+        let formValues = new FormData(form);
+        for (let entry of formValues.values()) {
             if (entry != "") {
-                formfilled++;
-            }
+                formFilled++;
+            } //Alle felder ausgefüllt?
             if (entry.toString().includes("@")) {
-                checkmail++;
-            }
+                checkMail++;
+            } //Email auf @ überprüfen
         }
-        if (formfilled < _formSize) {
-            checkformresponse.innerText = "Bitte füllen Sie das Formular vollständig aus";
-        } //Form ausgefüllt?
-        else if (checkmail != 1) {
-            checkformresponse.innerText = "Bitte verwenden Sie eine echte Email";
+        if (formFilled < _formSize) {
+            checkFormResponse.innerText = "Bitte füllen Sie das Formular vollständig aus";
+        }
+        else if (checkMail != 1) {
+            checkFormResponse.innerText = "Bitte verwenden Sie eine echte Email";
         }
         else {
-            send(_formstring);
+            send(_formString);
         }
         async function send(_data) {
-            let formdata = new FormData(form);
-            let formstring = new URLSearchParams(formdata);
-            formstring.append("_id", "user");
+            let formData = new FormData(form);
+            let formString = new URLSearchParams(formData);
+            formString.append("_id", "user");
             for (let entry of _data.values()) {
-                formstring.append("_id", entry);
+                formString.append("_id", entry);
             }
             //Senden und fetchen der Antwort
             let response = await fetch("https://pruefungsabgabe.herokuapp.com/", {
                 method: "POST",
-                body: formstring
+                body: formString
             });
             let data = await response.text();
             if (data == "Erfolg") {
                 refreshData();
             }
             else
-                (checkformresponse.innerText = "Da hat etwas nicht funktioniert. Bitte erneut versuchen");
+                (checkFormResponse.innerText = "Da hat etwas nicht funktioniert. Bitte erneut versuchen");
         }
     }
     function refreshData() {

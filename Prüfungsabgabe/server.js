@@ -64,7 +64,7 @@ var Server;
                     await setAusgeliehen(datenobjekt);
                     _response.end();
                 }
-                if (datenobjekt._id[0] == "frei") { //auf frei setzen
+                if (datenobjekt._id[0] == "frei") { //Auf frei setzen
                     _response.setHeader("content-type", "text/html; charset=utf-8");
                     _response.setHeader("Access-Control-Allow-Origin", "*");
                     await setFrei(datenobjekt);

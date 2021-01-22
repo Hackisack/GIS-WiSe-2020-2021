@@ -1,14 +1,14 @@
 "use strict";
 var Pruefungsabgabe;
 (function (Pruefungsabgabe) {
-    let tabellenheader = "<tr>" +
+    let tabellenHeader = "<tr>" +
         "<th>Artikel</th>" +
         "<th>Status</th>" +
         "<th>Name</th>" +
         "<th>Mail</th>" +
         "<th>Verwalten</th>" +
         "</tr>";
-    let tabellencode = "<tr>" +
+    let tabellenCode = "<tr>" +
         "<td class=\"artikel\"></td>" +
         "<td class=\"status\"></td>" +
         "<td class=\"name\"></td>" +
@@ -20,8 +20,8 @@ var Pruefungsabgabe;
     let status = document.getElementsByClassName("status");
     let name = document.getElementsByClassName("name");
     let email = document.getElementsByClassName("email");
-    let buttonausgeliehen = document.getElementsByClassName("buttonausgeliehen");
-    let buttonfrei = document.getElementsByClassName("buttonfrei");
+    let buttonAusgeliehen = document.getElementsByClassName("buttonausgeliehen");
+    let buttonFrei = document.getElementsByClassName("buttonfrei");
     getData();
     async function getData() {
         let response = await fetch("https://pruefungsabgabe.herokuapp.com/");
@@ -30,9 +30,9 @@ var Pruefungsabgabe;
         buildSite(data);
     }
     function buildSite(_data) {
-        tabelle.innerHTML = tabellenheader;
-        for (let x = 0; x < _data.produkte.length; x++) { //Build alle Tabelleneinträge
-            tabelle.innerHTML = tabelle.innerHTML + tabellencode;
+        tabelle.innerHTML = tabellenHeader;
+        for (let x = 0; x < _data.produkte.length; x++) { //Baue alle Tabelleneinträge
+            tabelle.innerHTML = tabelle.innerHTML + tabellenCode;
             artikel[x].textContent = _data.produkte[x].name;
             status[x].textContent = _data.produkte[x].status;
             if (_data.produkte[x].ausleihname != "") {
@@ -49,26 +49,26 @@ var Pruefungsabgabe;
             }
         }
         for (let x = 0; x < _data.produkte.length; x++) {
-            buttonausgeliehen[x].addEventListener("click", function () { send(_data.produkte[x]._id, "ausgeliehen"); });
-            buttonfrei[x].addEventListener("click", function () { send(_data.produkte[x]._id, "frei"); });
+            buttonAusgeliehen[x].addEventListener("click", function () { send(_data.produkte[x]._id, "ausgeliehen"); });
+            buttonFrei[x].addEventListener("click", function () { send(_data.produkte[x]._id, "frei"); });
             if (_data.produkte[x].status == "frei") {
-                buttonfrei[x].className = "buttonfrei buttonausfreigrau";
-                buttonfrei[x].toggleAttribute("disabled");
-                buttonausgeliehen[x].className = "buttonausgeliehen buttonausfreigrau";
-                buttonausgeliehen[x].toggleAttribute("disabled");
+                buttonFrei[x].className = "buttonfrei buttongrau";
+                buttonFrei[x].toggleAttribute("disabled");
+                buttonAusgeliehen[x].className = "buttonausgeliehen buttongrau";
+                buttonAusgeliehen[x].toggleAttribute("disabled");
             }
         }
     }
     async function send(_id, _operation) {
-        let formstring = new URLSearchParams();
-        formstring.append("Email", "asta.furtwangen");
-        formstring.append("Name", "Asta");
-        formstring.append("_id", _operation);
-        formstring.append("_id", _id);
+        let formString = new URLSearchParams();
+        formString.append("Email", "asta.furtwangen");
+        formString.append("Name", "Asta");
+        formString.append("_id", _operation);
+        formString.append("_id", _id);
         //Senden und fetchen der Antwort
         await fetch("https://pruefungsabgabe.herokuapp.com/", {
             method: "POST",
-            body: formstring
+            body: formString
         });
         clearSite();
     }
