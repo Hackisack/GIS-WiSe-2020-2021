@@ -69,7 +69,7 @@ namespace Pruefungsabgabe {
     async function getData(): Promise<void> {
         let response: Response = await fetch("https://pruefungsabgabe.herokuapp.com/");
         let json: string = await response.text();
-        let data: Daten = JSON.parse(json);
+        let data: Daten[] = JSON.parse(json);
         buildSite(data);
 
 
@@ -82,7 +82,7 @@ namespace Pruefungsabgabe {
 
 
 
-    async function save(_data: Daten): Promise<void> {
+    async function save(_data: Daten[]): Promise<void> {
 
         let cartFilled: number = 0;
 
@@ -100,7 +100,7 @@ namespace Pruefungsabgabe {
 
             for (let x: number = 0; x < checkboxen.length; x++) {
 
-                if (checkboxen[x].checked) { formString.append("_id", _data.produkte[x]._id); }
+                if (checkboxen[x].checked) { formString.append("_id", _data[x]._id); }
             }
 
             sessionStorage.setItem("data", formString.toString());
@@ -112,19 +112,19 @@ namespace Pruefungsabgabe {
 
 
 
-    function buildSite(_data: Daten): void {
+    function buildSite(_data: Daten[]): void {
 
 
 
 
 
-        for (let x: number = 0; x < _data.produkte.length; x++) { //Build all Produkte
+        for (let x: number = 0; x < _data.length; x++) { //Build all Produkte
 
             insertDiv.innerHTML = insertDiv.innerHTML + produktCode;
-            produktBild[x].setAttribute("src", _data.produkte[x].produktbild);
-            information[x].innerHTML = "Name: " + _data.produkte[x].name + "<br>" + "<br>" + "Beschreibung: " + _data.produkte[x].beschreibung + "<br>" + "<br>" + "Ausleihgebühr: " + _data.produkte[x].preis + "€" + "<br>" + "<br>";
+            produktBild[x].setAttribute("src", _data[x].produktbild);
+            information[x].innerHTML = "Name: " + _data[x].name + "<br>" + "<br>" + "Beschreibung: " + _data[x].beschreibung + "<br>" + "<br>" + "Ausleihgebühr: " + _data[x].preis + "€" + "<br>" + "<br>";
 
-            if (_data.produkte[x].status != "frei") { produktDiv[x].className = "produkt produktgrey"; containerDiv[x].className = "container containergrey"; checkboxen[x].toggleAttribute("disabled"); }
+            if (_data[x].status != "frei") { produktDiv[x].className = "produkt produktgrey"; containerDiv[x].className = "container containergrey"; checkboxen[x].toggleAttribute("disabled"); }
 
 
 
@@ -145,7 +145,7 @@ namespace Pruefungsabgabe {
     }
 
 
-    function onetimeEvent(_data: Daten): void {
+    function onetimeEvent(_data: Daten[]): void {
 
 
         if (reload == 0) {
@@ -159,14 +159,14 @@ namespace Pruefungsabgabe {
     }
 
 
-    function auswahlRefresh(_data: Daten): void {
+    function auswahlRefresh(_data: Daten[]): void {
 
         let currentPrice: number = 0;
 
         for (let x: number = 0; x < checkboxen.length; x++) {
 
             if (currentPrice != 0) { checkFormResponse.innerText = ""; }
-            if (checkboxen[x].checked && _data.produkte[x].status == "frei") { currentPrice += _data.produkte[x].preis; cartText.innerHTML = "Gesamte Leihgebühr: " + currentPrice.toString() + "€"; }
+            if (checkboxen[x].checked && _data[x].status == "frei") { currentPrice += _data[x].preis; cartText.innerHTML = "Gesamte Leihgebühr: " + currentPrice.toString() + "€"; }
             else { cartText.innerHTML = "Gesamte Leihgebühr: " + currentPrice.toString() + "€"; }
 
         }
@@ -175,11 +175,11 @@ namespace Pruefungsabgabe {
 
 
 
-    function auswahlEvent(_data: Daten): void {
+    function auswahlEvent(_data: Daten[]): void {
 
-        for (let x: number = 0; x < _data.produkte.length; x++) {
+        for (let x: number = 0; x < _data.length; x++) {
 
-            if (_data.produkte[x].status == "frei") {
+            if (_data[x].status == "frei") {
                 auswahlButtons[x].addEventListener("click", function (): void { checkboxen[x].checked = true; });
             }
             else { auswahlButtons[x].className = "auswahl auswahlgrey"; auswahlButtons[x].toggleAttribute("disabled"); }
@@ -211,7 +211,12 @@ namespace Pruefungsabgabe {
 
     interface Daten {
 
-        produkte: [{ _id: string, name: string, produktbild: string, beschreibung: string, preis: number, status: string }];
+       _id: string;
+        name: string;
+        produktbild: string;
+        beschreibung: string;
+        preis: number;
+        status: string;
 
 
 

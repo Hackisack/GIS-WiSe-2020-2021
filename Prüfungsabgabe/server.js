@@ -74,7 +74,7 @@ var Server;
         }
         async function retrieveAll() {
             let alleDaten = await daten.find().toArray();
-            let alleDatenString = "{" + "\"produkte\":" + JSON.stringify(alleDaten) + "}";
+            let alleDatenString = JSON.stringify(alleDaten);
             return alleDatenString;
         }
         async function reserveById(_Daten) {

@@ -31,33 +31,33 @@ var Pruefungsabgabe;
     }
     function buildSite(_data) {
         tabelle.innerHTML = tabellenHeader;
-        for (let x = 0; x < _data.produkte.length; x++) { //Baue alle Tabelleneinträge
+        for (let x = 0; x < _data.length; x++) { //Baue alle Tabelleneinträge
             tabelle.innerHTML = tabelle.innerHTML + tabellenCode;
-            artikel[x].textContent = _data.produkte[x].name;
-            status[x].textContent = _data.produkte[x].status;
-            if (_data.produkte[x].ausleihname != "") {
-                name[x].textContent = _data.produkte[x].ausleihname;
+            artikel[x].textContent = _data[x].name;
+            status[x].textContent = _data[x].status;
+            if (_data[x].ausleihname != "") {
+                name[x].textContent = _data[x].ausleihname;
             }
             else {
                 name[x].textContent = " -- ";
             }
-            if (_data.produkte[x].ausleihemail != "") {
-                email[x].textContent = _data.produkte[x].ausleihemail;
+            if (_data[x].ausleihemail != "") {
+                email[x].textContent = _data[x].ausleihemail;
             }
             else {
                 email[x].textContent = " -- ";
             }
         }
-        for (let x = 0; x < _data.produkte.length; x++) {
-            buttonAusgeliehen[x].addEventListener("click", function () { send(_data.produkte[x]._id, "ausgeliehen"); });
-            buttonFrei[x].addEventListener("click", function () { send(_data.produkte[x]._id, "frei"); });
-            if (_data.produkte[x].status == "frei") {
+        for (let x = 0; x < _data.length; x++) {
+            buttonAusgeliehen[x].addEventListener("click", function () { send(_data[x]._id, "ausgeliehen"); });
+            buttonFrei[x].addEventListener("click", function () { send(_data[x]._id, "frei"); });
+            if (_data[x].status == "frei") {
                 buttonFrei[x].className = "buttonfrei buttongrau";
                 buttonFrei[x].toggleAttribute("disabled");
                 buttonAusgeliehen[x].className = "buttonausgeliehen buttongrau";
                 buttonAusgeliehen[x].toggleAttribute("disabled");
             }
-            if (_data.produkte[x].status == "ausgeliehen") {
+            if (_data[x].status == "ausgeliehen") {
                 buttonAusgeliehen[x].className = "buttonausgeliehen buttongrau";
                 buttonAusgeliehen[x].toggleAttribute("disabled");
             }

@@ -7,7 +7,9 @@ export namespace Server {
 
     interface ReserveObjekt {
 
-        Email: string; Name: string; _id: [string];
+        Email: string; 
+        Name: string; 
+        _id: [string];
 
     }
 
@@ -142,7 +144,7 @@ export namespace Server {
 
         async function retrieveAll(): Promise<string> {
             let alleDaten: string[] = await daten.find().toArray();
-            let alleDatenString: string = "{" + "\"produkte\":" + JSON.stringify(alleDaten) + "}";
+            let alleDatenString: string = JSON.stringify(alleDaten);
 
             return alleDatenString;
         }

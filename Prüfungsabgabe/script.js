@@ -53,7 +53,7 @@ var Pruefungsabgabe;
             let formString = new URLSearchParams();
             for (let x = 0; x < checkboxen.length; x++) {
                 if (checkboxen[x].checked) {
-                    formString.append("_id", _data.produkte[x]._id);
+                    formString.append("_id", _data[x]._id);
                 }
             }
             sessionStorage.setItem("data", formString.toString());
@@ -61,11 +61,11 @@ var Pruefungsabgabe;
         }
     }
     function buildSite(_data) {
-        for (let x = 0; x < _data.produkte.length; x++) { //Build all Produkte
+        for (let x = 0; x < _data.length; x++) { //Build all Produkte
             insertDiv.innerHTML = insertDiv.innerHTML + produktCode;
-            produktBild[x].setAttribute("src", _data.produkte[x].produktbild);
-            information[x].innerHTML = "Name: " + _data.produkte[x].name + "<br>" + "<br>" + "Beschreibung: " + _data.produkte[x].beschreibung + "<br>" + "<br>" + "Ausleihgebühr: " + _data.produkte[x].preis + "€" + "<br>" + "<br>";
-            if (_data.produkte[x].status != "frei") {
+            produktBild[x].setAttribute("src", _data[x].produktbild);
+            information[x].innerHTML = "Name: " + _data[x].name + "<br>" + "<br>" + "Beschreibung: " + _data[x].beschreibung + "<br>" + "<br>" + "Ausleihgebühr: " + _data[x].preis + "€" + "<br>" + "<br>";
+            if (_data[x].status != "frei") {
                 produktDiv[x].className = "produkt produktgrey";
                 containerDiv[x].className = "container containergrey";
                 checkboxen[x].toggleAttribute("disabled");
@@ -88,8 +88,8 @@ var Pruefungsabgabe;
             if (currentPrice != 0) {
                 checkFormResponse.innerText = "";
             }
-            if (checkboxen[x].checked && _data.produkte[x].status == "frei") {
-                currentPrice += _data.produkte[x].preis;
+            if (checkboxen[x].checked && _data[x].status == "frei") {
+                currentPrice += _data[x].preis;
                 cartText.innerHTML = "Gesamte Leihgebühr: " + currentPrice.toString() + "€";
             }
             else {
@@ -98,8 +98,8 @@ var Pruefungsabgabe;
         }
     }
     function auswahlEvent(_data) {
-        for (let x = 0; x < _data.produkte.length; x++) {
-            if (_data.produkte[x].status == "frei") {
+        for (let x = 0; x < _data.length; x++) {
+            if (_data[x].status == "frei") {
                 auswahlButtons[x].addEventListener("click", function () { checkboxen[x].checked = true; });
             }
             else {
