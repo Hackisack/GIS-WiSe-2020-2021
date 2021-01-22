@@ -62,13 +62,12 @@ var P_3_1Server;
             });
         }
     }
-    function checkMail(data, storeDaten) {
-        let _daten = "{" + "\"data\":[" + JSON.stringify(storeDaten) + "]}";
+    function checkMail(alldata, storeDaten) {
+        let _daten = JSON.stringify(storeDaten);
         let datenObjekt = JSON.parse(_daten);
-        let allData = JSON.parse(data);
-        if (allData.data.length >= 1) {
-            for (let x = 0; x < allData.data.length; x++) {
-                if (allData.data[x].Email == datenObjekt.data[0].Email) {
+        if (alldata.length >= 1) {
+            for (let x = 0; x < alldata.length; x++) {
+                if (alldata[x].Email == datenObjekt.Email) {
                     return "Die benutze Email befindet sich bereits in unserer Datenbank. Loggen Sie sich ein oder registrieren Sie sich mit einer anderen.";
                 }
             }
@@ -81,32 +80,28 @@ var P_3_1Server;
     }
     async function retrieve() {
         let alleDaten = await daten.find().toArray();
-        let alleDatenString = "{" + "\"data\":" + JSON.stringify(alleDaten) + "}";
-        return alleDatenString;
+        return alleDaten;
     }
     async function retrieveNames() {
         let alleDaten = await daten.find().toArray();
-        let alleDatenObjekt = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
         let alleNamenString = "";
         let nummerierung = 1;
-        if (alleDatenObjekt.data.length < 1) {
+        if (alleDaten.length < 1) {
             return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  ";
         }
-        for (let x = 0; x < alleDatenObjekt.data.length; x++) {
-            alleNamenString = alleNamenString + nummerierung + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+        for (let x = 0; x < alleDaten.length; x++) {
+            alleNamenString = alleNamenString + nummerierung + ". " + alleDaten[x].Vname + " " + alleDaten[x].Nname + ", ";
             nummerierung++;
         }
         return alleNamenString;
     }
     async function checkLogin(_daten) {
         let alleDaten = await daten.find().toArray();
-        let alleDatenObjekt = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
-        let userdaten = "{" + "\"data\":[" + JSON.stringify(_daten) + "]}";
-        let datenObjekt = JSON.parse(userdaten);
-        if (alleDatenObjekt.data.length >= 1) {
-            for (let x = 0; x < alleDatenObjekt.data.length; x++) {
-                if (alleDatenObjekt.data[x].Email == datenObjekt.data[0].Email && (alleDatenObjekt.data[x].Password == datenObjekt.data[0].Password)) {
-                    return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ".";
+        let datenObjekt = JSON.parse(JSON.stringify(_daten));
+        if (alleDaten.length >= 1) {
+            for (let x = 0; x < alleDaten.length; x++) {
+                if (alleDaten[x].Email == datenObjekt.Email && (alleDaten[x].Password == datenObjekt.Password)) {
+                    return "Erfolgreich angemeldet. Willkommen zurück " + alleDaten[x].Vname + " " + alleDaten[x].Nname + ".";
                 }
             }
         }

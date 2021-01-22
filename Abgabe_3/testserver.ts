@@ -10,13 +10,18 @@ export namespace P_3_1Server {
 
   interface AllData {
 
-    data: [{ _id: string, Vname: string, Nname: string, Email: string, Password: string }];
+     _id: string;
+     Vname: string;
+     Nname: string;
+     Email: string;
+     Password: string;
 
   }
 
   interface LoginData {
 
-    data: [{ Email: string, Password: string }];
+    Email: string; 
+    Password: string;
 
   }
 
@@ -118,20 +123,18 @@ export namespace P_3_1Server {
 
 
 
-  function checkMail(data: string, storeDaten: Daten): string {
+  function checkMail(alldata: AllData[], storeDaten: Daten): string {
 
-    let _daten: string = "{" + "\"data\":[" + JSON.stringify(storeDaten) + "]}";
+    let _daten: string =  JSON.stringify(storeDaten);
     let datenObjekt: AllData = JSON.parse(_daten);
-
-    let allData: AllData = JSON.parse(data);
-
+    
 
 
-    if (allData.data.length >= 1) {
+    if (alldata.length >= 1) {
 
-      for (let x: number = 0; x < allData.data.length; x++) {
+      for (let x: number = 0; x < alldata.length; x++) {
 
-        if (allData.data[x].Email == datenObjekt.data[0].Email) { return "Die benutze Email befindet sich bereits in unserer Datenbank. Loggen Sie sich ein oder registrieren Sie sich mit einer anderen."; }
+        if (alldata[x].Email == datenObjekt.Email) { return "Die benutze Email befindet sich bereits in unserer Datenbank. Loggen Sie sich ein oder registrieren Sie sich mit einer anderen."; }
 
       }
 
@@ -151,25 +154,23 @@ export namespace P_3_1Server {
 
 
 
-  async function retrieve(): Promise<string> {
-    let alleDaten: string[] = await daten.find().toArray();
-    let alleDatenString: string = "{" + "\"data\":" + JSON.stringify(alleDaten) + "}";
+  async function retrieve(): Promise<AllData[]> {
+    let alleDaten: AllData[] = await daten.find().toArray();
 
-    return alleDatenString;
+    return alleDaten;
   }
 
 
 
   async function retrieveNames(): Promise<string> {
-    let alleDaten: string[] = await daten.find().toArray();
-    let alleDatenObjekt: AllData = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
+    let alleDaten: AllData[] = await daten.find().toArray();
     let alleNamenString: string = "";
     let nummerierung: number = 1;
 
-    if (alleDatenObjekt.data.length < 1) { return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  "; }
+    if (alleDaten.length < 1) { return "Momentan befindet sich noch kein registrierter Nutzer in unserer Datenbank  "; }
 
-    for (let x: number = 0; x < alleDatenObjekt.data.length; x++) {
-      alleNamenString = alleNamenString + nummerierung + ". " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + ", ";
+    for (let x: number = 0; x < alleDaten.length; x++) {
+      alleNamenString = alleNamenString + nummerierung + ". " + alleDaten[x].Vname + " " + alleDaten[x].Nname + ", ";
       nummerierung++;
     }
 
@@ -179,18 +180,17 @@ export namespace P_3_1Server {
 
 
   async function checkLogin(_daten: Daten): Promise<string> {
-    let alleDaten: string[] = await daten.find().toArray();
-    let alleDatenObjekt: AllData = JSON.parse("{" + "\"data\":" + JSON.stringify(alleDaten) + "}");
+    let alleDaten: AllData[] = await daten.find().toArray();
+   
 
+    
+    let datenObjekt: LoginData = JSON.parse(JSON.stringify(_daten));
 
-    let userdaten: string = "{" + "\"data\":[" + JSON.stringify(_daten) + "]}";
-    let datenObjekt: LoginData = JSON.parse(userdaten);
+    if (alleDaten.length >= 1) {
 
-    if (alleDatenObjekt.data.length >= 1) {
+      for (let x: number = 0; x < alleDaten.length; x++) {
 
-      for (let x: number = 0; x < alleDatenObjekt.data.length; x++) {
-
-        if (alleDatenObjekt.data[x].Email == datenObjekt.data[0].Email && (alleDatenObjekt.data[x].Password == datenObjekt.data[0].Password)) { return "Erfolgreich angemeldet. Willkommen zurück " + alleDatenObjekt.data[x].Vname + " " + alleDatenObjekt.data[x].Nname + "."; }
+        if (alleDaten[x].Email == datenObjekt.Email && (alleDaten[x].Password == datenObjekt.Password)) { return "Erfolgreich angemeldet. Willkommen zurück " + alleDaten[x].Vname + " " + alleDaten[x].Nname + "."; }
 
       }
 
