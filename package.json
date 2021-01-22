@@ -11,7 +11,7 @@
         "@types/node": "^14.14.12"
     },
     "scripts": {
-        "start": "node Prüfungsabgabe/server.js"
+        "start": "node Abgabe_3/testserver.js"
     },
     "repository": {
         "type": "git",
