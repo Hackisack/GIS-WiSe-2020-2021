@@ -211,7 +211,7 @@ namespace Pruefungsabgabe {
 
     interface Daten {
 
-       _id: string;
+        _id: string;
         name: string;
         produktbild: string;
         beschreibung: string;

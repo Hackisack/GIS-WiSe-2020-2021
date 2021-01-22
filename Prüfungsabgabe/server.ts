@@ -7,8 +7,8 @@ export namespace Server {
 
     interface ReserveObjekt {
 
-        Email: string; 
-        Name: string; 
+        Email: string;
+        Name: string;
         _id: [string];
 
     }

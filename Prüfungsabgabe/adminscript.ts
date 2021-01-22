@@ -142,7 +142,7 @@ namespace Pruefungsabgabe {
     interface Daten {
 
         _id: string;
-         name: string;
+        name: string;
         produktbild: string;
         beschreibung: string;
         preis: number;
