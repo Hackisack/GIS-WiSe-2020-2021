@@ -195,34 +195,6 @@ h2 {
     color: white;
 }
 
-#tabelle {
-    border-collapse: collapse;
-    width: 80%;
-}
-
-#tabelle th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #00644D;
-    color: white;
-}
-
-#tabelle td,
-#tabelle th {
-    border: 1px solid rgb(199, 199, 199);
-    padding: 8px;
-    text-align: center;
-    font-size: 20px;
-}
-
-#tabelle tr {
-    background-color: rgb(225, 224, 224);
-}
-
-#tabelle tr:hover {
-    background-color: #76b900;
-}
-
 .buttonausgeliehen,
 .buttonfrei {
     text-decoration: none;
