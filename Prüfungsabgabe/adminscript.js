@@ -57,6 +57,10 @@ var Pruefungsabgabe;
                 buttonAusgeliehen[x].className = "buttonausgeliehen buttongrau";
                 buttonAusgeliehen[x].toggleAttribute("disabled");
             }
+            if (_data.produkte[x].status == "ausgeliehen") {
+                buttonAusgeliehen[x].className = "buttonausgeliehen buttongrau";
+                buttonAusgeliehen[x].toggleAttribute("disabled");
+            }
         }
     }
     async function send(_id, _operation) {
