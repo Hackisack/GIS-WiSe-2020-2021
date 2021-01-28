@@ -126,42 +126,6 @@ h2 {
     margin-bottom: 5px;
 }
 
-#savereservieren {
-    text-decoration: none;
-    color: white;
-    background-color: #00644D;
-    font-weight: 500;
-    border-radius: 5px;
-    padding: 10px 40px;
-    border-style: none;
-    margin-bottom: 5px;
-    margin-top: 10%;
-}
-
-#reservehide {
-    position: fixed;
-    display: none;
-    z-index: 1;
-}
-
-#reserveshow {
-    display: block;
-    z-index: 1;
-    margin: auto;
-    padding: 50px;
-    text-align: center;
-    background-color: #76b900;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-style: inset;
-    border-color: black;
-    border-radius: 3%;
-    border-width: 4px;
-    text-align: left;
-}
-
 .detaildiv,
 #form {
     color: white;
@@ -193,47 +157,6 @@ h2 {
     color: black;
     border-radius: 3%;
     color: white;
-}
-
-#tabelle {
-    border-collapse: collapse;
-    width: 80%;
-}
-
-#tabelle th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #00644D;
-    color: white;
-}
-
-#tabelle td,
-#tabelle th {
-    border: 1px solid rgb(199, 199, 199);
-    padding: 8px;
-    text-align: center;
-    font-size: 20px;
-}
-
-#tabelle tr {
-    background-color: rgb(225, 224, 224);
-}
-
-#tabelle tr:hover {
-    background-color: #76b900;
-}
-
-.buttonausgeliehen,
-.buttonfrei {
-    text-decoration: none;
-    color: white;
-    background-color: #00644D;
-    font-weight: 500;
-    border-radius: 5px;
-    padding: 10px 40px;
-    border-style: none;
-    margin-bottom: 5px;
-    margin-top: 5px;
 }
 
 .buttongrau {
