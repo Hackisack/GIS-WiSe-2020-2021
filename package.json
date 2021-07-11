@@ -5,13 +5,22 @@
     "main": "index.js",
     "dependencies": {
         "@types/mongodb": "^3.6.3",
-        "mongodb": "^3.6.3"
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "ffmpeg": "0.0.4",
+        "fluent-ffmpeg": "^2.1.2",
+        "mongodb": "^3.6.3",
+        "multistream": "^4.1.0",
+        "usetube": "^2.0.5",
+        "youtube-playlist": "^1.0.4",
+        "ytdl-core": "^4.5.0",
+        "ytfps": "^1.0.5"
     },
     "devDependencies": {
         "@types/node": "^14.14.12"
     },
     "scripts": {
-        "start": "node Prüfungsabgabe/server.js"
+        "start": "node Ermir/server.js"
     },
     "repository": {
         "type": "git",
